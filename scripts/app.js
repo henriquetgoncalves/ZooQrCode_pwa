@@ -74,11 +74,11 @@
     
     
     document.getElementById('fabQrCodeScan').addEventListener('click', function () {        
-        window.location.href = "/qrcode-scanner.html";
+        window.location.href = "./qrcode-scanner.html";
     });
     
     document.getElementById('menuItem_About').addEventListener('click', function () {        
-        window.location.href = "/about.html";
+        window.location.href = "./about.html";
     });
     
     document.getElementById('menuItem_Refresh').addEventListener('click', function () {
