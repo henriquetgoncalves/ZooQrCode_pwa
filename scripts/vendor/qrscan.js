@@ -138,7 +138,9 @@ QRReader.scan = function (callback) {
 				QRReader.canvas.height);
 
 			if (imgData.data) {
-				QRReader.decoder.postMessage(imgData);
+				console.log(QRReader.decoder.postMessage(imgData));
+                QRReader.decoder.postMessage(imgData);
+                
 			}
 		} catch(e) {
 			// Try-Catch to circumvent Firefox Bug #879717
