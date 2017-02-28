@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Zoo QrCode Scanner</title>
+    <meta http-equiv=X-UA-Compatible content="IE=edge">
+    <meta name=description content="Zoo QRCode Scanner">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Zoo QrCode"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="#1a8f00">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Zoo QrCode"/>
+    <meta name="msapplication-TileImage" content="/images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#1a8f00">
+    <meta name="theme-color" content="#1a6100"/>
+    <link rel="apple-touch-icon" href="/images/touch/apple-touch-icon.jpg"/>
+    <link rel="icon" type="image/png" href="/images/icons/icon-32x32.png" sizes="32x32"/>    
+    <link rel="shortcut icon" href="/images/touch/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/styles/qrcode.css">
+    <link rel="stylesheet" href="/styles/inline.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+
+  </head>
+  <body>
+    <div class="app__layout">
+      <!-- Header -->
+    <header class="header">
+        <button id="menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon" onclick="window.location.href = '/index.html'">
+            <i class="material-icons"> navigate_before</i>
+        </button>
+        <h1 class="header__title">QRCode Scanner</h1>
+    </header>
+      
+
+      <!-- Menu Overlay -->
+      <div class="menu__overlay"></div>
+
+      <main class="app__layout-content">
+        <video autoplay></video>
+        
+        <!-- Scanner animation -->
+        <div class="custom-scanner"></div>
+        
+        <!-- Scan button -->
+        <button class="custom-btn">
+          <i class="material-icons custom-fab-icon">center_focus_strong</i>
+        </button>
+        
+        <!-- Dialog  -->
+        <div class="app__dialog app__dialog--hide">
+          <div class="app__dialog-content">
+            <h5>QR Code</h5>
+            <input type="text" id="result">
+          </div>
+          <div class="app__dialog-actions">
+            <button type="button" class="app__dialog-open">Open</button>
+            <button type="button" class="app__dialog-close">Close</button>
+          </div>
+        </div>
+
+        <!-- Snackbar -->
+        <div class="app__snackbar"></div>
+      </main>
+    </div>
+    <script src="scripts/snackbar.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/vendor/qrscan.js"></script>
+    <script>
+      if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1" ) {
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-75516573-1', 'auto');
+        ga('send', 'pageview');
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<html>
+
+<head>
+    <!-- Material Design Lite -->
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Zoo QrCode</title>
+
+    <link rel="stylesheet" type="text/css" href="styles/inline.css">
+    <link rel="stylesheet" type="text/css" href="styles/dialog-polyfill.css" />
+    <link rel="stylesheet" type="text/css" href="styles/qrcode.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="images/icons/icon-32x32.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <script src="scripts/app.js" async></script>
+    <script src="scripts/dialog-polyFill.js"></script>
+
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Zoo QrCode">
+    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+    <!-- Add to home screen for Windows -->
+    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#1a8f00">
+
+
+</head>
+
+<body>
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+
+            <div class="mdl-layout__header-row">
+                <h1 class="header__title">Zoo QrCode</h1>
+
+                <!-- Right aligned menu below button -->
+                <button id="menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
+                    <i class="material-icons">more_vert</i>
+                </button>
+
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-lower-right">
+                    <li id="menuItem_Refresh" class="mdl-menu__item">Refresh Cards</li>
+                    <li id="menuItem_Add" class="mdl-menu__item">Add City</li>
+                    <li id="menuItem_About" class="mdl-menu__item">About</li>
+
+                </ul>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">
+                <img src="images/icons/icon-128x128.png" style="margin:10px 10px ;"/>
+            </span>
+
+            <nav class="mdl-navigation">
+
+                <a class="mdl-navigation__link" href="/qrcode-scanner.html">
+                    <i class="material-icons">center_focus_strong</i> QrCode Scanner
+                </a>
+                <a class="mdl-navigation__link" href="">
+                    <i class="material-icons">collections</i> Galery
+                </a>
+                <a class="mdl-navigation__link" href="/about.html">
+                    <i class="material-icons">info</i> About
+                </a>
+
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <!-- Scan button -->
+                <button id="fabQrCodeScan" class="custom-btn">
+                    <i class="material-icons custom-fab-icon">center_focus_strong</i>
+                </button>
+            </div>
+
+            <dialog id="dialog" class="mdl-dialog">
+                <h3 class="mdl-dialog__title">Add new city</h3>
+                <div class="mdl-dialog__content">
+                    <div class="dialog-body">
+                        <select id="selectCityToAdd">
+                            <option value="austin">Austin, TX</option>
+                            <option value="boston">Boston, MA</option>
+                            <option value="chicago">Chicago, IL</option>
+                            <option value="portland">Portland, OR</option>
+                            <option value="sanfrancisco">San Francisco, CA</option>
+                            <option value="seattle">Seattle, WA</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mdl-dialog__actions">
+                    <button id="dialog-button-AddCity" class="mdl-button dialog-button-add">Add</button>
+                    <button id="dialog-button-close" type="button" class="mdl-button dialog-button-close">Cancel</button>
+                    <!--<button type="button" class="mdl-button" disabled>Disabled action</button>-->
+                </div>
+            </dialog>
+            <!-- Colored FAB button with ripple -->
+            <!--<div class="fab-bottom">
+                
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                    <i class="material-icons">flip</i>
+                </button>
+            </div>-->
+        </main>
+    </div>
+</body>
+
+</html>
