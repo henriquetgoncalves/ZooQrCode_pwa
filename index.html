@@ -21,8 +21,6 @@
     <link rel="icon" href="images/icons/icon-32x32.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <script src="scripts/app.js" async></script>
-    <script src="scripts/dialog-polyFill.js"></script>
 
     <!-- Add to home screen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -82,35 +80,33 @@
                 <button id="fabQrCodeScan" class="custom-btn">
                     <i class="material-icons custom-fab-icon">center_focus_strong</i>
                 </button>
-            </div>
 
-            <dialog id="dialog" class="mdl-dialog">
-                <h3 class="mdl-dialog__title">Add new city</h3>
-                <div class="mdl-dialog__content">
-                    <div class="dialog-body">
-                        <select id="selectCityToAdd">
-                            <option value="austin">Austin, TX</option>
-                            <option value="boston">Boston, MA</option>
-                            <option value="chicago">Chicago, IL</option>
-                            <option value="portland">Portland, OR</option>
-                            <option value="sanfrancisco">San Francisco, CA</option>
-                            <option value="seattle">Seattle, WA</option>
-                        </select>
+
+                <dialog id="dialog" class="mdl-dialog">
+                    <h3 class="mdl-dialog__title">Add new city</h3>
+                    <div class="mdl-dialog__content">
+                        <div class="dialog-body">
+                            <select id="selectCityToAdd">
+                                <option value="austin">Austin, TX</option>
+                                <option value="boston">Boston, MA</option>
+                                <option value="chicago">Chicago, IL</option>
+                                <option value="portland">Portland, OR</option>
+                                <option value="sanfrancisco">San Francisco, CA</option>
+                                <option value="seattle">Seattle, WA</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="mdl-dialog__actions">
-                    <button id="dialog-button-AddCity" class="mdl-button dialog-button-add">Add</button>
-                    <button id="dialog-button-close" type="button" class="mdl-button dialog-button-close">Cancel</button>
-                    <!--<button type="button" class="mdl-button" disabled>Disabled action</button>-->
-                </div>
-            </dialog>
-            <!-- Colored FAB button with ripple -->
-            <!--<div class="fab-bottom">
-                
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-                    <i class="material-icons">flip</i>
-                </button>
-            </div>-->
+                    <div class="mdl-dialog__actions">
+                        <button id="dialog-button-AddCity" class="mdl-button dialog-button-add">Add</button>
+                        <button id="dialog-button-close" type="button" class="mdl-button dialog-button-close">Cancel</button>
+                        <!--<button type="button" class="mdl-button" disabled>Disabled action</button>-->
+                    </div>
+                </dialog>
+
+            </div>
+            <script src="scripts/app.js" async></script>
+            <script src="scripts/dialog-polyFill.js"></script>
+
         </main>
     </div>
 </body>
