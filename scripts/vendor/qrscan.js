@@ -138,7 +138,7 @@ QRReader.scan = function (callback) {
 				QRReader.canvas.height);
 
 			if (imgData.data) {
-				console.log(QRReader.decoder.postMessage(imgData));
+				//console.log(QRReader.decoder.postMessage(imgData));
                 QRReader.decoder.postMessage(imgData);
                 
 			}

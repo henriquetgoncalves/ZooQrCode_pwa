@@ -1,0 +1,16 @@
+{
+  "apelido": "Leão",
+  "nome_cientifico": "Panthera leo",
+  "estado_conservacao": "Ameaçado de Extinção",
+  "classificacao": {
+    "reino": "Animal",
+    "classe": "Mamíferos",
+    "ordem": "Carnívora",
+    "familia": "Felídeos",
+    "especie": "P. Leo"
+  },
+  "distribuicao_geo_habitat": "Vivem nos países Asiáticos e Africanos. Localizado nas Florestas da Índia e África.",
+  "caracteristicas": "Leões vivem em grandes bandos. Os responsáveis pela caça são as fêmeas do grupo, só que quem se alimenta primeiro da presa são os machos e o restante fica para as fêmeas e filhotes. Vivem em média 20 anos.",
+  "dieta_habitos_alimentares": "Pequenos a médios animais.",
+  "reproducao": "Gestação 100 à 119 dias nascendo de 1 à 2 filhotes."
+}

@@ -39,7 +39,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     //Menu click event
     //menuIconElement.addEventListener('click', showMenu, false);
-    menuOverlayElement.addEventListener('click', hideMenu, false);
+    //menuOverlayElement.addEventListener('click', hideMenu, false);
 
     //Dialog close btn event
     dialogCloseBtnElement.addEventListener('click', hideDialog, false);
@@ -48,20 +48,9 @@ window.addEventListener("DOMContentLoaded", () => {
     //To open result in browser
     function openInBrowser() {
         console.log('Result: ', copiedText);
-        window.open(copiedText, '_blank', 'toolbar=0,location=0,menubar=0');
+        window.location.href="animal-detail.html?animal=" + copiedText;
+        //window.open(copiedText, '_blank', 'toolbar=0,location=0,menubar=0');
         copiedText = null;
-    }
-
-    //To show menu
-    function showMenu() {
-        menuElement.classList.add('menu--show');
-        menuOverlayElement.classList.add('menu__overlay--show');
-    }
-
-    //To hide menu
-    function hideMenu() {
-        menuElement.classList.remove('menu--show');
-        menuOverlayElement.classList.remove('menu__overlay--show');
     }
 
     //Add scan funz to fab button, if its other iOS
