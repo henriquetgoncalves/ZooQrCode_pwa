@@ -32,7 +32,7 @@ var filesToCache = [
     './about.html',
     './animal-detail.html',
     './qrcode-scanner.html',
-    './decoder.min.js'
+    './decoder.min.js',
     './JSONdata/default.json',
     './JSONdata/leao.json',    
     './scripts/app.js',
