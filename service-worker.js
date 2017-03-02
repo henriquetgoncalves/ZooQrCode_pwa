@@ -30,9 +30,11 @@ var filesToCache = [
     './',
     './index.html',
     './about.html',
-    './JSONdata/default.json',
-    './JSONdata/leao.json',
+    './animal-detail.html',
     './qrcode-scanner.html',
+    './decoder.min.js'
+    './JSONdata/default.json',
+    './JSONdata/leao.json',    
     './scripts/app.js',
     './scripts/dialog-polyFill.js',
     './scripts/main.js',
