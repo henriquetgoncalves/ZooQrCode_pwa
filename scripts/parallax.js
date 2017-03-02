@@ -1,4 +1,4 @@
-$(function(){
+(function(){
     $(window).scroll(function() {
         var $parallax = $('header');
         var st = $(this).scrollTop();

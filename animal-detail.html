@@ -1,3 +1,4 @@
+icon
 <html>
 
 <head>
@@ -17,9 +18,8 @@
     <link rel="stylesheet" type="text/css" href="styles/inline.css">
     <link rel="stylesheet" type="text/css" href="styles/dialog-polyfill.css" />
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" href="images/icons/ic_tigre-32x32.png">
+    <link rel="icon" href="images/icons/icon-32x32.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="script" href="scripts/parallax.js">
 
     <!-- Add to home screen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -40,55 +40,61 @@
         <button id="menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon" onclick="window.location.href = 'index.html'">
             <i class="material-icons"> navigate_before</i>
         </button>
-        <h1 id="header__title" class="header__title">???</h1>
+        <h1 class="header__title">???</h1>
     </header>
     <main class="main-parallax">
         <div id="image__animal" class="parallax"></div>
         <div class="card cardTemplate zoo-qcode" style="text-align: center;">
             <div class="Description_title">Nome Científico</div>
             <div class="description">
-                <p id="nome_cientifico" style="text-align: justify">O Zoo QrCode foi desenvolvido afim de facilitar e inovar a maneira de visualizar e obter conhecimento das características de cada animal.</p>
+                <p class="nome_cientifico" style="text-align: justify">O Zoo QrCode foi desenvolvido afim de facilitar e inovar a maneira de visualizar e obter conhecimento das características de cada animal.</p>
             </div>
         </div>
         <div class="card cardTemplate zoo-qcode" style="text-align: center;">
-            <div  class="Description_title">Estado de Conservação</div>
-            <div  class="description">
-                <p id="estado_conservacao" style="text-align: justify">O Zoo QrCode foi desenvolvido afim de facilitar e inovar a maneira de visualizar e obter conhecimento das características de cada animal.</p>
+            <div class="Description_title">Estado de Conservação</div>
+            <div class="description">
+                <p class="estado_conservacao" style="text-align: justify"></p>
             </div>
         </div>
-        <div class="card cardTemplate zoo-qcode" >
-            <div id="classificacao" class="Description_title"style="text-align: center;" >Classificação Científica</div>
-            <div class="description" >
+        <div class="card cardTemplate zoo-qcode">
+            <div id="classificacao" class="Description_title" style="text-align: center;">Classificação Científica</div>
+            <div class="description">
                 <i class="material-icons" style="width:70px;display: inline-block">info</i>
-                <p style="text-align: center; color: #9c9c9c; display: inline-block">Clique aqui para mais detalhes...</p>                                
+                <p style="text-align: center; color: #9c9c9c; display: inline-block">Clique aqui para mais detalhes...</p>
             </div>
         </div>
         <div class="card cardTemplate zoo-qcode" style="text-align: center;">
             <div class="Description_title">Distribuição Geográfica e Habitat</div>
             <div class="description">
-                <p id="distribuicao_geo_habitat" style="text-align: justify">O Zoo QrCode foi desenvolvido afim de facilitar e inovar a maneira de visualizar e obter conhecimento das características de cada animal.</p>
+                <p class="distribuicao_geo_habitat" style="text-align: justify">O Zoo QrCode foi desenvolvido afim de facilitar e inovar a maneira de visualizar e obter conhecimento das características de cada animal.</p>
             </div>
         </div>
         <div class="card cardTemplate zoo-qcode" style="text-align: center;">
             <div class="Description_title">Características</div>
             <div class="description">
-                <p id="caracteristicas" style="text-align: justify">O Zoo QrCode foi desenvolvido afim de facilitar e inovar a maneira de visualizar e obter conhecimento das características de cada animal.</p>
+                <p class="caracteristicas" style="text-align: justify">O Zoo QrCode foi desenvolvido afim de facilitar e inovar a maneira de visualizar e obter conhecimento das características de cada animal.</p>
             </div>
         </div>
         <div class="card cardTemplate zoo-qcode" style="text-align: center;">
             <div class="Description_title">Dieta e Hábitos Alimentares</div>
             <div class="description">
-                <p id="dieta_habitos_alimentares" style="text-align: justify">O Zoo QrCode foi desenvolvido afim de facilitar e inovar a maneira de visualizar e obter conhecimento das características de cada animal.</p>
+                <p class="dieta_habitos_alimentares" style="text-align: justify">O Zoo QrCode foi desenvolvido afim de facilitar e inovar a maneira de visualizar e obter conhecimento das características de cada animal.</p>
             </div>
         </div>
         <div class="card cardTemplate zoo-qcode" style="text-align: center;">
             <div class="Description_title">Reprodução</div>
             <div class="description">
-                <p id="reproducao" style="text-align: justify">O Zoo QrCode foi desenvolvido afim de facilitar e inovar a maneira de visualizar e obter conhecimento das características de cada animal.</p>
+                <p class="reproducao" style="text-align: justify">O Zoo QrCode foi desenvolvido afim de facilitar e inovar a maneira de visualizar e obter conhecimento das características de cada animal.</p>
             </div>
-        </div>                                          
+        </div>
+        <div class="loader">
+            <svg viewBox="0 0 32 32" width="32" height="32">
+                <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+            </svg>
+        </div>
     </main>
-
+    <script src="scripts/parallax.js"></script>
+    <script src="scripts/vendor/animaldata.js"></script>
 </body>
 
 </html>
