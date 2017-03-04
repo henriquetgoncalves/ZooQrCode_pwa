@@ -46,6 +46,7 @@ app.getAnimal = function (key) {
                     console.log("getting cache for URL=" + url);
                     //results.label = label;
                     //results.created = json.query.created;
+                    alert("Getting Cache "+JSON.stringify(json));
                     app.updateAnimalCard(results);
                 });
             }
@@ -61,6 +62,7 @@ app.getAnimal = function (key) {
             response.key = key;
             console.log("getting data for URL=" + url);
             //response.label = label;
+            alert("Getting URL online "+request.response);
             app.updateAnimalCard(response);
         }
 
