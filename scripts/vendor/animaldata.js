@@ -2,7 +2,7 @@ var animal = null;
 window.onload = function () {
     animal = location.search.split("?animal=")[1];
     console.log("console.log " + animal);
-    app.getAnimal(animal,"leao");
+    app.getAnimal(animal);
 }
 
 var app = {
@@ -28,9 +28,9 @@ if (app.isLoading) {
 
 
 // Gets a Animal for a specific city and update the card with the data        
-app.getAnimal = function (key, label) {
+app.getAnimal = function (key) {
     var url = 'https://henriquetgoncalves.github.io/ZooQrCode_wpa/JSONdata/';
-    url += key + '.json';
+    url += key + '.json';    
     if ('caches' in window) {
         /*
          * Check if the service worker has already cached this city's weather
@@ -43,7 +43,8 @@ app.getAnimal = function (key, label) {
                     var response = JSON.parse(request.response);
                     var results = json.query.results;
                     results.key = key;
-                    results.label = label;
+                    console.log("getting cache for URL=" + url);
+                    //results.label = label;
                     results.created = json.query.created;
                     app.updateAnimalCard(results);
                 });
@@ -58,7 +59,8 @@ app.getAnimal = function (key, label) {
         if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
             var response = JSON.parse(request.response);
             response.key = key;
-            response.label = label;
+            console.log("getting data for URL=" + url);
+            //response.label = label;
             app.updateAnimalCard(response);
         }
 

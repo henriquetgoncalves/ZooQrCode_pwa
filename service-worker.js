@@ -58,8 +58,6 @@ var filesToCache = [
     './images/icons/ic_avatar-32x32.png',
     './images/icons/ic_avatar-64x64.png',
     './images/icons/ic_avatar-128x128.png',
-    'https://code.getmdl.io/1.3.0/material.indigo-pink.min.css',
-    'https://code.getmdl.io/1.3.0/material.min.js',
     'https://fonts.googleapis.com/icon?family=Material+Icons'
 ];
 
