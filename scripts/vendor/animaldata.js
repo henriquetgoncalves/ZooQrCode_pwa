@@ -30,7 +30,7 @@ if (app.isLoading) {
 // Gets a Animal for a specific city and update the card with the data        
 app.getAnimal = function (key) {
     var url = 'https://henriquetgoncalves.github.io/ZooQrCode_wpa/JSONdata/';
-    url += key + '.json';    
+    url += key + '.json';
     if ('caches' in window) {
         /*
          * Check if the service worker has already cached this city's weather
@@ -41,35 +41,37 @@ app.getAnimal = function (key) {
             if (response) {
                 response.json().then(function updateFromCache(json) {
                     //var response = JSON.parse(request.response);                    
-                    var results = JSON.stringify(json);//json.query.results;
+                    var results = JSON.stringify(json); //json.query.results;
                     results.key = key;
                     console.log("getting cache for URL=" + url);
                     //results.label = label;
                     //results.created = json.query.created;
-                    alert("Getting Cache "+JSON.stringify(json));
+                    alert("Getting Cache " + JSON.stringify(json));
                     app.updateAnimalCard(results);
                 });
             }
         });
     }
 
-    // Make the XHR to get the data, then update the card
-    var request = new XMLHttpRequest();
+    if (navigator.onLine) {
+        // Make the XHR to get the data, then update the card
+        var request = new XMLHttpRequest();
 
-    request.onreadystatechange = function () {
-        if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-            var response = JSON.parse(request.response);
-            response.key = key;
-            console.log("getting data for URL=" + url);
-            //response.label = label;
-            alert("Getting URL online "+request.response);
-            app.updateAnimalCard(response);
-        }
+        request.onreadystatechange = function () {
+            if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+                var response = JSON.parse(request.response);
+                response.key = key;
+                console.log("getting data for URL=" + url);
+                //response.label = label;
+                alert("Getting URL online " + request.response);
+                app.updateAnimalCard(response);
+            }
 
-    };
-    request.open('GET', url);
-    request.send();
-    //app.saveSelectedAnimals();
+        };
+        request.open('GET', url);
+        request.send();
+        //app.saveSelectedAnimals();
+    }
 };
 
 app.updateAnimals = function () {
@@ -82,12 +84,12 @@ app.updateAnimals = function () {
 app.updateAnimalCard = function (data) {
         //var card = app.visibleCards[data.key];
         //if (!card) {
-            //card = app.cardTemplate.cloneNode(true);
-            //card.classList.remove('cardTemplate');
-            //card.querySelector('.header__title').textContent = data.apelido;
-            //card.removeAttribute('hidden');
-            //app.container.appendChild(card);
-          //  app.visibleCards[data.key] = card;
+        //card = app.cardTemplate.cloneNode(true);
+        //card.classList.remove('cardTemplate');
+        //card.querySelector('.header__title').textContent = data.apelido;
+        //card.removeAttribute('hidden');
+        //app.container.appendChild(card);
+        //  app.visibleCards[data.key] = card;
         //}
         app.header.querySelector('.header__title').textContent = data.apelido;
         app.container.querySelector('.nome_cientifico').textContent = data.nome_cientifico;
