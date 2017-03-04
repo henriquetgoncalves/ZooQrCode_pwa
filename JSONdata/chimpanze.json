@@ -1,0 +1,16 @@
+{
+  "apelido": "Chimpanzé",
+  "nome_cientifico": "Pan troglodytes",
+  "estado_conservacao": "Ameaçado de Extinção",
+  "classificacao": {
+    "reino": "Animal",
+    "classe": "Mamíferos",
+    "ordem": "Primatas",
+    "familia": "Hominídeos",
+    "especie": "P. Troglodytes"
+  },
+  "distribuicao_geo_habitat": "Vivem no continente africano Localizado nas florestas chuvosas da África.",
+  "caracteristicas": "Chimpanzé tem visão e a audição bem aguçada, conseguindo distinguir mais de 32 tipos de sons. Enxergam todas as cores exceto o vermelho.",
+  "dieta_habitos_alimentares": "Frutos, verduras, ovos, insetos e até pequenos mamíferos.",
+  "reproducao": "Gestação de 230 dias. Gêmeos são raros nascendo somente um filhote."
+}
