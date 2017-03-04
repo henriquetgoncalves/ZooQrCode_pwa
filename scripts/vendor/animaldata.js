@@ -92,7 +92,7 @@ app.updateAnimalCard = function (data) {
         //  app.visibleCards[data.key] = card;
         //}
         app.header.querySelector('.header__title').textContent = data.apelido;
-        app.container.querySelector('#image__animal').backgroundImage = data.imagem;
+        app.container.querySelector('#image__animal').style.backgroundImage = "url("+data.imagem+")";
         app.container.querySelector('.nome_cientifico').textContent = data.nome_cientifico;
         app.container.querySelector('.estado_conservacao').textContent =
             data.estado_conservacao;
