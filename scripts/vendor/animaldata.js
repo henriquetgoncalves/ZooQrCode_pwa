@@ -40,13 +40,13 @@ app.getAnimal = function (key) {
         caches.match(url).then(function (response) {
             if (response) {
                 response.json().then(function updateFromCache(json) {
-                    //var response = JSON.parse(request.response);                    
-                    var results = JSON.stringify(json); //json.query.results;
+                    var response = JSON.stringify(json);//JSON.parse(request.response);                    
+                    var results = JSON.parse(response); //json.query.results;
                     results.key = key;
                     console.log("getting cache for URL=" + url);
                     //results.label = label;
                     //results.created = json.query.created;
-                    alert("Getting Cache " + JSON.stringify(json));
+                    alert("Getting Cache " + response);
                     app.updateAnimalCard(results);
                 });
             }
