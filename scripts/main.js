@@ -48,6 +48,7 @@ window.addEventListener("DOMContentLoaded", () => {
     //To open result in browser
     function OpenAnimalDetail() {
         console.log('Result: ', copiedText);
+        window.navigator.vibrate([100,30,100,30,100,200,200,30,200,30,200,200,100,30,100,30,100]); // Vibrate 'SOS' in Morse.
         window.location.href="animal-detail.html?animal=" + copiedText;
         //window.open(copiedText, '_blank', 'toolbar=0,location=0,menubar=0');
         copiedText = null;
