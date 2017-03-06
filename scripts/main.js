@@ -43,10 +43,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
     //Dialog close btn event
     dialogCloseBtnElement.addEventListener('click', hideDialog, false);
-    dialogOpenBtnElement.addEventListener('click', openInBrowser, false);
+    dialogOpenBtnElement.addEventListener('click', OpenAnimalDetail, false);
 
     //To open result in browser
-    function openInBrowser() {
+    function OpenAnimalDetail() {
         console.log('Result: ', copiedText);
         window.location.href="animal-detail.html?animal=" + copiedText;
         //window.open(copiedText, '_blank', 'toolbar=0,location=0,menubar=0');
@@ -71,10 +71,11 @@ window.addEventListener("DOMContentLoaded", () => {
             textBoxEle.select();
             scanningEle.style.display = 'none';
             //if (isURL(result)) {
-            if ((result)) {
-                dialogOpenBtnElement.style.display = 'inline-block';
+            if (result) {
+                //dialogOpenBtnElement.style.display = 'inline-block';
+                OpenAnimalDetail();
             }
-            dialogElement.classList.remove('app__dialog--hide');
+            //dialogElement.classList.remove('app__dialog--hide');
         });
     }
 
@@ -139,11 +140,11 @@ window.addEventListener('load', (event) => {
 });
 
 //If service worker is installed, show offline usage notification
-if ("serviceWorker" in navigator) {
+/*if ("serviceWorker" in navigator) {
     navigator.serviceWorker.ready.then((registration) => {
         if (!localStorage.getItem("offline")) {
             localStorage.setItem("offline", true);
             snackbar.show('App is ready for offline usage.', 5000);
         }
     });
-}
+}*/

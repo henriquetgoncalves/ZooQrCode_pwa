@@ -53,8 +53,8 @@
                 <p class="estado_conservacao" style="text-align: justify"></p>
             </div>
         </div>
-        <div class="card cardTemplate zoo-qcode">
-            <div id="classificacao" class="Description_title" style="text-align: center;">Classificação Científica</div>
+        <div id="info_classificacao" class="card cardTemplate zoo-qcode">
+            <div class="Description_title" style="text-align: center;">Classificação Científica</div>
             <div class="description">
                 <i class="material-icons" style="width:70px;display: inline-block">info</i>
                 <p style="text-align: center; color: #9c9c9c; display: inline-block">Clique aqui para mais detalhes...</p>
@@ -89,8 +89,30 @@
                 <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
             </svg>
         </div>
+        <!-- Dialog  -->
+        <dialog id="dialog" class="mdl-dialog">
+            <h1 class="mdl-dialog__title">Classificação Científica</h1>
+            <div class="mdl-dialog__content">
+                <div class="dialog-body">
+                   <div><div class="Description_title" style="display: inline-block">Reino:</div>
+                    <p id="info_reino" style="text-align: justify;display: inline-block"></p></div>
+                    <div><div class="Description_title" style="display: inline-block">Classe:</div>
+                    <p id="info_classe" style="text-align: justify;display: inline-block"></p></div>
+                    <div><div class="Description_title" style="display: inline-block">Ordem:</div>
+                    <p id="info_ordem" style="text-align: justify;display: inline-block"></p></div>
+                    <div><div class="Description_title" style="display: inline-block">Família:</div>
+                    <p id="info_familia" style="text-align: justify;display: inline-block"></p></div>
+                    <div><div class="Description_title" style="display: inline-block">Espécie:</div>
+                    <p id="info_especie" style="text-align: justify;display: inline-block"></p>                                              </div>                                  
+                </div>
+            </div>
+            <div class="mdl-dialog__actions">
+                <button id="dialog-button-close" type="button" class="mdl-button dialog-button-close">Fechar</button>
+            </div>
+        </dialog>
     </main>
     <script src="scripts/parallax.js"></script>
+    <script src="scripts/dialog-polyFill.js"></script>
     <script src="scripts/vendor/animaldata.js"></script>
 </body>
 

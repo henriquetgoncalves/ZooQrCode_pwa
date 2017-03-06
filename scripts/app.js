@@ -23,7 +23,7 @@
 
         if (! dialog.showModal()) {
           dialogPolyfill.registerDialog(dialog);
-        }          
+        }
     });
 
     document.getElementById('dialog-button-close').addEventListener('click', function() {

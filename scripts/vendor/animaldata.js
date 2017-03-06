@@ -12,8 +12,22 @@ var app = {
     spinner: document.querySelector('.loader'),
     header: document.querySelector('.header'),
     cardTemplate: document.querySelector('.cardTemplate'),
-    container: document.querySelector('.main-parallax')
+    container: document.querySelector('.main-parallax'),
+    dialog:  document.querySelector('dialog'),
+    classificacao: document.getElementById('info_classificacao')
 }
+
+app.classificacao.addEventListener('click', function () {            
+        if (! app.dialog.showModal()) {
+          dialogPolyfill.registerDialog(app.dialog);
+        }
+}); 
+
+
+document.querySelector('#dialog-button-close').addEventListener('click', function () {            
+    app.dialog.close();
+}); 
+
 app.saveSelectedAnimals = function () {
     var selectedAnimals = JSON.stringify(app.selectedAnimals);
     // IMPORTANTE: See notes about use of localStorage.        
@@ -40,13 +54,13 @@ app.getAnimal = function (key) {
         caches.match(url).then(function (response) {
             if (response) {
                 response.json().then(function updateFromCache(json) {
-                    var response = JSON.stringify(json);//JSON.parse(request.response);                    
+                    var response = JSON.stringify(json); //JSON.parse(request.response);                    
                     var results = JSON.parse(response); //json.query.results;
                     results.key = key;
                     console.log("getting cache for URL=" + url);
                     //results.label = label;
                     //results.created = json.query.created;
-                    alert("Getting Cache " + response);
+                    //alert("Getting Cache " + response);
                     app.updateAnimalCard(results);
                 });
             }
@@ -63,7 +77,7 @@ app.getAnimal = function (key) {
                 response.key = key;
                 console.log("getting data for URL=" + url);
                 //response.label = label;
-                alert("Getting URL online " + request.response);
+                //alert("Getting URL online " + request.response);
                 app.updateAnimalCard(response);
             }
 
@@ -82,49 +96,34 @@ app.updateAnimals = function () {
 };
 
 app.updateAnimalCard = function (data) {
-        //var card = app.visibleCards[data.key];
-        //if (!card) {
-        //card = app.cardTemplate.cloneNode(true);
-        //card.classList.remove('cardTemplate');
-        //card.querySelector('.header__title').textContent = data.apelido;
-        //card.removeAttribute('hidden');
-        //app.container.appendChild(card);
-        //  app.visibleCards[data.key] = card;
-        //}
-        app.header.querySelector('.header__title').textContent = data.apelido;
-        app.container.querySelector('#image__animal').style.backgroundImage = "url("+data.imagem+")";
-        app.container.querySelector('.nome_cientifico').textContent = data.nome_cientifico;
-        app.container.querySelector('.estado_conservacao').textContent =
-            data.estado_conservacao;
-        app.container.querySelector('.distribuicao_geo_habitat').textContent = data.distribuicao_geo_habitat;
-        app.container.querySelector('.caracteristicas').textContent = data.caracteristicas;
-        app.container.querySelector('.dieta_habitos_alimentares').textContent = data.dieta_habitos_alimentares;
-        app.container.querySelector('.reproducao').textContent = data.reproducao;
-    }
-    /************************************************************************
-     *
-     * Code required to start the app
-     *
-     * NOTE: To simplify this codelab, we've used localStorage.
-     *   localStorage is a synchronous API and has serious performance
-     *   implications. It should not be used in production applications!
-     *   Instead, check out IDB (https://www.npmjs.com/package/idb) or
-     *   SimpleDB (https://gist.github.com/inexorabletash/c8069c042b734519680c)
-     ************************************************************************/
+    //var card = app.visibleCards[data.key];
+    //if (!card) {
+    //card = app.cardTemplate.cloneNode(true);
+    //card.classList.remove('cardTemplate');
+    //card.querySelector('.header__title').textContent = data.apelido;
+    //card.removeAttribute('hidden');
+    //app.container.appendChild(card);
+    //  app.visibleCards[data.key] = card;
+    //}
+    app.header.querySelector('.header__title').textContent = data.apelido;
+    app.container.querySelector('#image__animal').style.backgroundImage = "url(" + data.imagem + ")";
+    app.container.querySelector('.nome_cientifico').textContent = data.nome_cientifico;
+    app.container.querySelector('.estado_conservacao').textContent = data.estado_conservacao;
+    app.container.querySelector('#info_reino').textContent = data.classificacao.reino;
+    app.container.querySelector('#info_classe').textContent = data.classificacao.classe;
+    app.container.querySelector('#info_ordem').textContent = data.classificacao.ordem;
+    app.container.querySelector('#info_familia').textContent = data.classificacao.familia;
+    app.container.querySelector('#info_especie').textContent = data.classificacao.especie;        
+    app.container.querySelector('.distribuicao_geo_habitat').textContent = data.distribuicao_geo_habitat;
+    app.container.querySelector('.caracteristicas').textContent = data.caracteristicas;
+    app.container.querySelector('.dieta_habitos_alimentares').textContent = data.dieta_habitos_alimentares;
+    app.container.querySelector('.reproducao').textContent = data.reproducao;
+}
 
-/*app.selectedAnimals = localStorage.selectedAnimals;
-if (!app.selectedAnimals) {
-    app.selectedAnimals = JSON.parse(app.selectedAnimals);
-    app.selectedAnimals.forEach(function (animal) {
-        app.getAnimal(animal.key, animal.label);
-    });
-} else {
-    //app.updateAnimalCard(initialAnimal);
-    app.selectedAnimals = [
-        //{
-          //  key: initialAnimal.key,
-            //label: initialAnimal.label
-            //}
-    ];
-    app.saveSelectedAnimals();
-}*/
+//Hide dialog
+function hideDialog() {
+    //copiedText = null;
+    //textBoxEle.value = "";
+    //frame.src = "";
+    app.dialogElement.classList.add('app__dialog--hide');
+}
