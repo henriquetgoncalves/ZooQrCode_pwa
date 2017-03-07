@@ -51,6 +51,7 @@ var filesToCache = [
     './styles/material.indigo-pink.min.css',
     './favicon.ico',
     './images/icons/icon-32x32.png',
+    './images/icons/icon-64x64.png',
     './images/icons/icon-128x128.png',
     './images/icons/icon-144x144.png',
     './images/icons/icon-152x152.png',
@@ -60,6 +61,8 @@ var filesToCache = [
     './images/icons/ic_avatar-32x32.png',
     './images/icons/ic_avatar-64x64.png',
     './images/icons/ic_avatar-128x128.png',
+    './images/animals/minimalist_background4.png',
+    './images/animals/header.jpg',
     'https://fonts.googleapis.com/icon?family=Material+Icons'
 ];
 
