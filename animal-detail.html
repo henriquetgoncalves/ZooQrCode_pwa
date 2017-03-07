@@ -20,12 +20,17 @@
 
     <!-- Add to home screen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Zoo QrCode">
     <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
     <!-- Add to home screen for Windows -->
     <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
     <meta name="msapplication-TileColor" content="#1a9100">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#1a8f00">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Zoo QrCode"/>
+    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#1a8f00">
+    <meta name="theme-color" content="#1a8f00"/>
 
 
 </head>
@@ -35,9 +40,12 @@
 
     <header id="header" class="header">
         <button id="menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon" onclick="window.location.href = 'index.html'">
-            <i class="material-icons"> navigate_before</i>
+            <i class="material-icons">navigate_before</i>
         </button>
         <h1 class="header__title">   </h1>
+        <button id="menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon" onclick="window.location.href = 'qrcode-scanner.html'">
+            <i class="material-icons">center_focus_strong</i>
+        </button>        
     </header>
     <main class="main-parallax">
         <div id="image__animal" class="parallax"></div>

@@ -16,19 +16,24 @@
     <link rel="stylesheet" type="text/css" href="styles/inline.css">
     <link rel="stylesheet" type="text/css" href="styles/dialog-polyFill.css" />
     <link rel="stylesheet" type="text/css" href="styles/qrcode.css">
+    <link rel="stylesheet" type="text/css" href="styles/dashboard.css">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="images/icons/icon-32x32.png">
 
 
     <!-- Add to home screen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Zoo QrCode">
     <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
     <!-- Add to home screen for Windows -->
     <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
     <meta name="msapplication-TileColor" content="#1a9100">
-
+    <meta name="apple-mobile-web-app-status-bar-style" content="#1a8f00">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Zoo QrCode" />
+    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#1a8f00">
+    <meta name="theme-color" content="#1a8f00" />
 
 </head>
 
@@ -46,18 +51,16 @@
                 </button>
 
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-lower-right">
-                    <li id="menuItem_Refresh" class="mdl-menu__item">Refresh Cards</li>
-                    <li id="menuItem_Add" class="mdl-menu__item">Add City</li>
+                    <!--<li id="menuItem_Refresh" class="mdl-menu__item">Refresh Cards</li>
+                    <li id="menuItem_Add" class="mdl-menu__item">Add City</li>-->
                     <li id="menuItem_About" class="mdl-menu__item">About</li>
 
                 </ul>
             </div>
         </header>
         <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">
-                <img src="images/icons/icon-128x128.png" style="margin:10px 10px ;"/>
-            </span>
-
+            <div class="mdl-layout-title"><img src="images/icons/icon-64x64.png"/></div>               
+                
             <nav class="mdl-navigation">
 
                 <a class="mdl-navigation__link" href="qrcode-scanner.html">
@@ -74,7 +77,7 @@
                 </a>
                 <a class="mdl-navigation__link" href="">
                     <i class="material-icons">map</i> Mapa do Zoológico
-                </a>                                                
+                </a>
                 <a class="mdl-navigation__link" href="about.html">
                     <i class="material-icons">info</i> Sobre
                 </a>
@@ -87,8 +90,6 @@
                 <button id="fabQrCodeScan" class="custom-btn">
                     <i class="material-icons custom-fab-icon">center_focus_strong</i>
                 </button>
-
-
                 <dialog id="dialog" class="mdl-dialog">
                     <h3 class="mdl-dialog__title">Add new city</h3>
                     <div class="mdl-dialog__content">

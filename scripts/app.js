@@ -11,12 +11,12 @@
         window.location.href = "about.html";
     });
     
-    document.getElementById('menuItem_Refresh').addEventListener('click', function () {
+    /*document.getElementById('menuItem_Refresh').addEventListener('click', function () {
         // Refresh all of the forecasts
         app.updateForecasts();
-    });
+    });*/
     
-    document.getElementById('menuItem_Add').addEventListener('click', function () {
+    /*document.getElementById('menuItem_Add').addEventListener('click', function () {
         // Open/show the add new city dialog
         //app.toggleAddDialog(true);
         var dialog = document.querySelector('dialog');
@@ -28,7 +28,7 @@
 
     document.getElementById('dialog-button-close').addEventListener('click', function() {
         dialog.close();
-    }); 
+    });*/ 
  
     
     document.getElementById('dialog-button-AddCity').addEventListener('click', function () {

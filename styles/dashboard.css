@@ -1,0 +1,8 @@
+.mdl-layout-title {
+    background-image: url(../images/animals/header.jpg);
+    height: 200px;
+    width: 100%;    
+}
+.mdl-layout-title img {
+    margin:10px;
+}
