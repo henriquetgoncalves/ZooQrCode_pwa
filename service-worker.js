@@ -32,6 +32,7 @@ var filesToCache = [
     './about.html',
     './animal-detail.html',
     './qrcode-scanner.html',
+    './map.html',
     './decoder.min.js',
     './JSONdata/default.json',
     './JSONdata/leao.json',    
@@ -48,6 +49,7 @@ var filesToCache = [
     './styles/dialog-polyFill.css',
     './styles/inline.css',    
     './styles/qrcode.css',
+    './styles/dashboard.css',
     './styles/material.indigo-pink.min.css',
     './favicon.ico',
     './images/icons/icon-32x32.png',
@@ -62,7 +64,9 @@ var filesToCache = [
     './images/icons/ic_avatar-64x64.png',
     './images/icons/ic_avatar-128x128.png',
     './images/animals/minimalist_background4.png',
+    './images/animals/minimalist_background5.png',
     './images/animals/header.jpg',
+    './images/animals/mapa_zoologico.gif',
     'https://fonts.googleapis.com/icon?family=Material+Icons'
 ];
 
