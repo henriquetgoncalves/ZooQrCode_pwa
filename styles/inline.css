@@ -373,10 +373,14 @@ body {
     background-image: url(../images/animals/mapa_zoologico.gif);
     background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color: #464646;
-    margin-top: 20px;
-    max-width: 100%;
-    max-height: 600px;
+    /*background-attachment: fixed;*/
+    background-size: contain;
+    background-color: #0000;
+    /*margin-top: 20px;*/
+    width: 100%;
+    height: 100%;
+}
+
+#body_map{
+    background-color: #000;
 }
