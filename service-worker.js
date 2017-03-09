@@ -34,6 +34,7 @@ var filesToCache = [
     './qrcode-scanner.html',
     './map.html',
     './decoder.min.js',
+    './JSONdata/animals.json',
     './JSONdata/default.json',
     './JSONdata/leao.json',    
     './JSONdata/chimpanze.json',    

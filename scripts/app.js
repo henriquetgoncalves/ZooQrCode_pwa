@@ -11,6 +11,13 @@
         window.location.href = "about.html";
     });
     
+    document.getElementById('menuItem_Sair').addEventListener('click', function() {
+        window.open(location, '_self', '');
+        window.close();        
+    });
+    
+
+    
     /*document.getElementById('menuItem_Refresh').addEventListener('click', function () {
         // Refresh all of the forecasts
         app.updateForecasts();
@@ -31,7 +38,7 @@
     });*/ 
  
     
-    document.getElementById('dialog-button-AddCity').addEventListener('click', function () {
+    /*document.getElementById('dialog-button-AddCity').addEventListener('click', function () {
         // Add the newly selected city
         var select = document.getElementById('selectCityToAdd');
         var selected = select.options[select.selectedIndex];
@@ -44,7 +51,8 @@
         });
         app.saveSelectedCities();
         dialog.close();
-    });
+    });*/
+    
 
     //Registrando o arquivo service-worker
     if ('serviceWorker' in navigator) {
