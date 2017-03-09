@@ -368,3 +368,15 @@ body {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
+
+#mapa_zoo{
+    background-image: url(../images/animals/mapa_zoologico.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+    margin-top: 20px;
+    max-width: 100%;
+    max-height: 600px;
+}
