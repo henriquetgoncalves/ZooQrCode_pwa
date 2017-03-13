@@ -72,7 +72,7 @@ var filesToCache = [
 
 self.addEventListener('fetch', function (e) {
     console.log('[ServiceWorker] Fetch', e.request.url);
-    var dataUrl = 'https://henriquetgoncalves.github.io/';
+    var dataUrl = new URL("./",self.location).href;//'https://henriquetgoncalves.github.io/';
     if (e.request.url.indexOf(dataUrl) === 0) {
         e.respondWith(
             fetch(e.request)

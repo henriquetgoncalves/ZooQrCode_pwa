@@ -41,7 +41,10 @@
                             results = JSON.parse(response);
                             if (key === "JSONdata/animals.json") {
                                 listAnimals(results);
+                            } else {
+                                console.log(response.apelido);
                             }
+
                         });
                     }
                     console.log("getting data for cache=" + url);
@@ -60,6 +63,8 @@
                         console.log("getting data for URL=" + url);
                         if (key === "JSONdata/animals.json") {
                             listAnimals(results);
+                        } else {
+                            console.log(results.apelido);
                         }
                     }
                 }
@@ -74,7 +79,7 @@
     var listAnimals = function (data) {
         for (var a in data) {
             console.log(a);
-            getData('JSONdata/'+ a + '.json');
+            getData('JSONdata/' + a + '.json');
         }
     }
     getData("animal-detail.html");
