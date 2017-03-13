@@ -74,6 +74,7 @@
     var listAnimals = function (data) {
         for (var a in data) {
             console.log(a);
+            getData('JSONdata/'+ a + '.json');
         }
     }
     getData("animal-detail.html");
