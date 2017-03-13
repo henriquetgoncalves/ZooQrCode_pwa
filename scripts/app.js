@@ -17,7 +17,7 @@
     });
     
     var getData = function (key) {
-        var url = 'https://henriquetgoncalves.github.io/ZooQrCode_wpa/JSONdata/' + key + '.json';
+        var url = 'https://henriquetgoncalves.github.io/ZooQrCode_wpa/' + key + '';
 
         if ('caches' in window) {
             /*
@@ -63,8 +63,8 @@
             console.log(a);
         }
     }
-    
-    getData("animals");
+    getData("animal-detail.html");
+    getData("JSONdata/animals.json");
     //Registrando o arquivo service-worker
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
