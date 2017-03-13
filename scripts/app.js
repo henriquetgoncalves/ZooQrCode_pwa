@@ -15,7 +15,15 @@
         window.open(location, '_self', '');
         window.close();
     });
-    
+
+    function isJson(str) {
+        try {
+            JSON.parse(str);
+        } catch (e) {
+            return false;
+        }
+        return true;
+    }
     var getData = function (key) {
         var url = 'https://henriquetgoncalves.github.io/ZooQrCode_wpa/' + key + '';
 
@@ -27,14 +35,16 @@
              */
             caches.match(url).then(function (response) {
                 if (response) {
-                    response.json().then(function updateFromCache(json) {
-                        var response = JSON.stringify(json);
-                        results = JSON.parse(response);
-                        console.log("getting data for cache=" + url);
-                        if (key === "animals") {
-                            listAnimals(results);
-                        }
-                    });
+                    if (isJson(response)) {
+                        response.json().then(function updateFromCache(json) {
+                            var response = JSON.stringify(json);
+                            results = JSON.parse(response);
+                            if (key === "JSONdata/animals.json") {
+                                listAnimals(results);
+                            }
+                        });
+                    }
+                    console.log("getting data for cache=" + url);
                 }
             });
         }
@@ -45,19 +55,22 @@
 
             request.onreadystatechange = function () {
                 if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-                    results = JSON.parse(request.response);
-                    console.log("getting data for URL=" + url);
-                    if (key === "animals") {
-                        listAnimals(results);
+                    if (isJson(request.response)) {
+                        results = JSON.parse(request.response);
+                        console.log("getting data for URL=" + url);
+                        if (key === "JSONdata/animals.json") {
+                            listAnimals(results);
+                        }
                     }
                 }
+
             };
             request.open('GET', url);
             request.send();
 
         }
     }
-    
+
     var listAnimals = function (data) {
         for (var a in data) {
             console.log(a);
@@ -77,5 +90,8 @@
             });
         });
     }
+
+
+
 
 })();
