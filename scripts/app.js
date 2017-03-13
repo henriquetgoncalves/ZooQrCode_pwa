@@ -3,57 +3,68 @@
      *
      * Event listeners for UI elements
      * ****************************************************************************/
-    document.getElementById('fabQrCodeScan').addEventListener('click', function () {        
+    document.getElementById('fabQrCodeScan').addEventListener('click', function () {
         window.location.href = "qrcode-scanner.html";
     });
-    
-    document.getElementById('menuItem_About').addEventListener('click', function () {        
+
+    document.getElementById('menuItem_About').addEventListener('click', function () {
         window.location.href = "about.html";
     });
-    
-    document.getElementById('menuItem_Sair').addEventListener('click', function() {
+
+    document.getElementById('menuItem_Sair').addEventListener('click', function () {
         window.open(location, '_self', '');
-        window.close();        
+        window.close();
     });
     
+    var getData = function (key) {
+        var url = 'https://henriquetgoncalves.github.io/ZooQrCode_wpa/JSONdata/' + key + '.json';
 
-    
-    /*document.getElementById('menuItem_Refresh').addEventListener('click', function () {
-        // Refresh all of the forecasts
-        app.updateForecasts();
-    });*/
-    
-    /*document.getElementById('menuItem_Add').addEventListener('click', function () {
-        // Open/show the add new city dialog
-        //app.toggleAddDialog(true);
-        var dialog = document.querySelector('dialog');
-
-        if (! dialog.showModal()) {
-          dialogPolyfill.registerDialog(dialog);
+        if ('caches' in window) {
+            /*
+             * Check if the service worker has already cached this city's weather
+             * data. If the service worker has the data, then display the cached
+             * data while the app fetches the latest data.
+             */
+            caches.match(url).then(function (response) {
+                if (response) {
+                    response.json().then(function updateFromCache(json) {
+                        var response = JSON.stringify(json);
+                        results = JSON.parse(response);
+                        console.log("getting data for cache=" + url);
+                        if (key === "animals") {
+                            listAnimals(results);
+                        }
+                    });
+                }
+            });
         }
-    });
 
-    document.getElementById('dialog-button-close').addEventListener('click', function() {
-        dialog.close();
-    });*/ 
- 
-    
-    /*document.getElementById('dialog-button-AddCity').addEventListener('click', function () {
-        // Add the newly selected city
-        var select = document.getElementById('selectCityToAdd');
-        var selected = select.options[select.selectedIndex];
-        var key = selected.value;
-        var label = selected.textContent;
-        app.getForecast(key, label);
-        app.selectedCities.push({
-            key: key,
-            label: label
-        });
-        app.saveSelectedCities();
-        dialog.close();
-    });*/
-    
+        if (navigator.onLine) {
+            // Make the XHR to get the data, then update the card
+            var request = new XMLHttpRequest();
 
+            request.onreadystatechange = function () {
+                if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+                    results = JSON.parse(request.response);
+                    console.log("getting data for URL=" + url);
+                    if (key === "animals") {
+                        listAnimals(results);
+                    }
+                }
+            };
+            request.open('GET', url);
+            request.send();
+
+        }
+    }
+    
+    var listAnimals = function (data) {
+        for (var a in data) {
+            console.log(a);
+        }
+    }
+    
+    getData("animals");
     //Registrando o arquivo service-worker
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {

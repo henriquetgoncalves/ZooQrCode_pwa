@@ -244,7 +244,7 @@ body {
 }
 
 .card {
-    
+    min-width: 200px;
     padding: 16px;
     position: relative;
     box-sizing: border-box;
@@ -383,4 +383,14 @@ body {
 
 #body_map{
     background-color: #000;
+}
+
+.icon_animal {
+    background-size: contain;
+    background-repeat: no-repeat;
+    max-height: 64px;
+    max-width: 128px;    
+    max-height: 256px;
+    max-width: 512px;
+    border-radius: 50px;
 }

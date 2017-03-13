@@ -64,8 +64,7 @@ var filesToCache = [
     './images/icons/ic_avatar-32x32.png',
     './images/icons/ic_avatar-64x64.png',
     './images/icons/ic_avatar-128x128.png',
-    './images/animals/minimalist_background4.png',
-    './images/animals/minimalist_background5.png',
+    './images/animals/animals_band.gif',
     './images/animals/header.jpg',
     './images/animals/mapa_zoologico.gif',
     'https://fonts.googleapis.com/icon?family=Material+Icons'

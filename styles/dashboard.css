@@ -7,10 +7,11 @@
     margin:10px;
 }
 body{
-    background-image: url(../images/animals/minimalist_background5.png);
+    background-image: url(../images/animals/animals_band.gif);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
-    background-color: #464646;
+    background-size: contain;
+    /*background-color: #464646;*/
+    background-color: #FFF;
 }
