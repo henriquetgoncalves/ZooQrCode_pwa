@@ -6,7 +6,8 @@ window.onload = function () {
 
 
 var getData = function (key) {
-    var url = 'https://henriquetgoncalves.github.io/ZooQrCode_wpa/JSONdata/' + key + '.json';
+    var url = new URL("./",self.location).href + '/JSONdata/' + key +'.json';
+    //'https://henriquetgoncalves.github.io/ZooQrCode_wpa/JSONdata/' + key + '.json';
 
     if ('caches' in window) {
         /*
@@ -68,7 +69,7 @@ var createCard = function (key, animal) {
         cardTemplate = document.querySelector('.cardTemplate').cloneNode(true);
     }
     cardTemplate.id = "card_" + key;
-    cardTemplate.querySelector('.icon_animal').style.backgroundImage = "url(" + animal.imagem + ")";
+    cardTemplate.querySelector('.icon_animal').src =  animal.imagem;
     cardTemplate.querySelector('#name').textContent = animal.apelido;
     cardTemplate.style.display = null;
     document.querySelector('.main').appendChild(cardTemplate);

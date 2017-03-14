@@ -13,20 +13,26 @@ var app = {
     header: document.querySelector('.header'),
     cardTemplate: document.querySelector('.cardTemplate'),
     container: document.querySelector('.main-parallax'),
-    dialog:  document.querySelector('dialog'),
+    dialog: document.querySelector('dialog'),
+    dialog_offline: document.querySelector('dialog-offline'),
     classificacao: document.getElementById('info_classificacao')
 }
 
-app.classificacao.addEventListener('click', function () {            
-        if (! app.dialog.showModal()) {
-          dialogPolyfill.registerDialog(app.dialog);
-        }
-}); 
+app.classificacao.addEventListener('click', function () {
+    if (!app.dialog.showModal()) {
+        dialogPolyfill.registerDialog(app.dialog);
+    }
+});
 
 
-document.querySelector('#dialog-button-close').addEventListener('click', function () {            
+document.querySelector('#dialog-button-close').addEventListener('click', function () {
     app.dialog.close();
-}); 
+});
+
+
+document.querySelector('#dialog-offline-button-close').addEventListener('click', function () {
+    app.dialog_offline.close();
+});
 
 app.saveSelectedAnimals = function () {
     var selectedAnimals = JSON.stringify(app.selectedAnimals);
@@ -43,7 +49,7 @@ if (app.isLoading) {
 
 // Gets a Animal for a specific city and update the card with the data        
 app.getAnimal = function (key) {
-    var url = 'https://henriquetgoncalves.github.io/ZooQrCode_wpa/JSONdata/';
+    var url = new URL("./",self.location).href + '/JSONdata/';//'https://henriquetgoncalves.github.io/ZooQrCode_wpa/JSONdata/';
     url += key + '.json';
     if ('caches' in window) {
         /*
@@ -82,9 +88,14 @@ app.getAnimal = function (key) {
             }
 
         };
-        request.open('GET', url);
-        request.send();
-        //app.saveSelectedAnimals();
+        try {
+            request.open('GET', url);
+            request.send();            
+        } catch(err) {
+            if (!app.dialog_offline.showModal()) {
+                dialogPolyfill.registerDialog(app.dialog_offline);
+            }
+        }
     }
 };
 
@@ -113,17 +124,9 @@ app.updateAnimalCard = function (data) {
     app.container.querySelector('#info_classe').textContent = data.classificacao.classe;
     app.container.querySelector('#info_ordem').textContent = data.classificacao.ordem;
     app.container.querySelector('#info_familia').textContent = data.classificacao.familia;
-    app.container.querySelector('#info_especie').textContent = data.classificacao.especie;        
+    app.container.querySelector('#info_especie').textContent = data.classificacao.especie;
     app.container.querySelector('.distribuicao_geo_habitat').textContent = data.distribuicao_geo_habitat;
     app.container.querySelector('.caracteristicas').textContent = data.caracteristicas;
     app.container.querySelector('.dieta_habitos_alimentares').textContent = data.dieta_habitos_alimentares;
     app.container.querySelector('.reproducao').textContent = data.reproducao;
-}
-
-//Hide dialog
-function hideDialog() {
-    //copiedText = null;
-    //textBoxEle.value = "";
-    //frame.src = "";
-    app.dialogElement.classList.add('app__dialog--hide');
 }

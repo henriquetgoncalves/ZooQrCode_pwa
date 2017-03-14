@@ -25,7 +25,7 @@
         return true;
     }
     var getData = function (key) {
-        var url = 'https://henriquetgoncalves.github.io/ZooQrCode_wpa/' + key + '';
+        var url = new URL("./",self.location).href + key ; //'https://henriquetgoncalves.github.io/ZooQrCode_wpa/' + key + '';
 
         if ('caches' in window) {
             /*
