@@ -1,6 +1,6 @@
 var animal = null;
 window.onload = function () {
-    animal = location.search.split("?animal=")[1];
+    animal = gup("animal",location.search);
     console.log("console.log " + animal);
     app.getAnimal(animal);
 }
@@ -116,7 +116,7 @@ app.updateAnimalCard = function (data) {
     //app.container.appendChild(card);
     //  app.visibleCards[data.key] = card;
     //}
-    app.header.querySelector('.header__title').textContent = data.apelido;
+    app.header.querySelector('.header__title').textContent = data.nome;
     app.container.querySelector('#image__animal').style.backgroundImage = "url(" + data.imagem + ")";
     app.container.querySelector('.nome_cientifico').textContent = data.nome_cientifico;
     app.container.querySelector('.estado_conservacao').textContent = data.estado_conservacao;
@@ -129,4 +129,13 @@ app.updateAnimalCard = function (data) {
     app.container.querySelector('.caracteristicas').textContent = data.caracteristicas;
     app.container.querySelector('.dieta_habitos_alimentares').textContent = data.dieta_habitos_alimentares;
     app.container.querySelector('.reproducao').textContent = data.reproducao;
+}
+
+function gup(name, url) {
+    if (!url) url = location.href;
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regexS = "[\\?&]" + name + "=([^&#]*)";
+    var regex = new RegExp(regexS);
+    var results = regex.exec(url);
+    return results == null ? null : results[1];
 }

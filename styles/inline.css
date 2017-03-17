@@ -244,7 +244,8 @@ body {
 }
 
 .card {
-    min-width: 200px;
+    min-height: 96px;    
+    min-width: 200px;    
     padding: 16px;
     position: relative;
     box-sizing: border-box;
@@ -386,11 +387,13 @@ body {
     background-color: #000;
 }
 
-.icon_animal {
+.icon {
     background-size: contain;
     background-repeat: no-repeat;
+    min-height: 78px;
+    min-width: 78px;     
     max-height: 96px;
-    max-width: 156px; 
+    max-width: 96px; 
     height: auto;
     width: auto;
     border-radius: 100%;
