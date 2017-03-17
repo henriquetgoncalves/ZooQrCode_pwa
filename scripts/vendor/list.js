@@ -87,8 +87,7 @@ var createCard = function (id, data) {
     }
     if (filter) {
         filter = filter.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/ /g, "_");
-    }
-    alert("I'm Here!");
+    }    
     if (tipo === "animals" && item == filter || tipo === "classes") {
         var cardTemplate = document.querySelector('#card_' + id);
         if (!cardTemplate) {
