@@ -1,54 +1,94 @@
-/**
- * @license
- * Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
- */
+var dataCacheName = 'ZooQrCode_PWA-v1_local';
+var cacheName = 'ZooQrCode_PWA_local';
+var filesToCache = [
+    './',
+    './index.html',
+    './about.html',
+    './animal-detail.html',
+    './qrcode-scanner.html',
+    './map.html',
+    './list.html',
+    'https://fonts.googleapis.com/icon?family=Material+Icons',
+    './decoder.min.js',
+    './JSONdata/animals.json',
+    './JSONdata/classes.json',
+    './JSONdata/leao.json',    
+    './JSONdata/chimpanze.json',    
+    './scripts/app.js',
+    './scripts/dialog-polyFill.js',
+    './scripts/main.js',
+    './scripts/menu.js',
+    './scripts/parallax.js',
+    './scripts/snackbar.js',    
+    './scripts/material.min.js',
+    './scripts/vendor/qrscan.js',
+    './scripts/vendor/animaldata.js',
+    './scripts/vendor/list.js',
+    './styles/dialog-polyFill.css',
+    './styles/inline.css',    
+    './styles/qrcode.css',
+    './styles/dashboard.css',
+    './styles/material.indigo-pink.min.css',
+    './favicon.ico',
+    './images/icons/icon-32x32.png',
+    './images/icons/icon-64x64.png',
+    './images/icons/icon-128x128.png',
+    './images/icons/icon-144x144.png',
+    './images/icons/icon-152x152.png',
+    './images/icons/icon-192x192.png',
+    './images/icons/icon-256x256.png',
+    './images/icons/ic_repteis-128x128.png',
+    './images/icons/ic_avatar-32x32.png',
+    './images/icons/ic_avatar-64x64.png',
+    './images/icons/ic_avatar-128x128.png',
+    './images/animals/animals_band.gif',
+    './images/animals/header.jpg',
+    './images/animals/mapa_zoologico.gif'    
+];
 
-(function(global) {
-  var VERSION = '1.0';
-  
-  function deserializeUrlParams(queryString) {
-    return new Map(queryString.split('&').map(function(keyValuePair) {
-      var splits = keyValuePair.split('=');
-      var key = decodeURIComponent(splits[0]);
-      var value = decodeURIComponent(splits[1]);
-      if (value.indexOf(',') >= 0) {
-        value = value.split(',');
-      }
-  
-      return [key, value];
-    }));
-  }
-  
-  global.params = deserializeUrlParams(location.search.substring(1));
-  
-  if (global.params.get('version') !== VERSION) {
-    throw 'The registered script is version ' + VERSION +
-          ' and cannot be used with <platinum-sw-register> version ' + global.params.get('version');
-  }
-  
-  if (global.params.has('importscript')) {
-    var scripts = global.params.get('importscript');
-    if (Array.isArray(scripts)) {
-      importScripts.apply(null, scripts);
+self.addEventListener('install', function (e) {
+    console.log('[ServiceWorker] Install');
+    e.waitUntil(
+        caches.open(cacheName).then(function (cache) {
+            console.log('[ServiceWorker] Caching app shell');
+            return cache.addAll(filesToCache);
+        })
+    );
+});
+
+self.addEventListener('activate', function (e) {
+    console.log('[ServiceWorker] Activate');
+    e.waitUntil(
+        caches.keys().then(function (keyList) {
+            return Promise.all(keyList.map(function (key) {
+                console.log('[ServiceWorker] Removing old cache', key);
+                if (key !== cacheName) {
+                    return caches.delete(key);
+                }
+            }));
+        })
+    );
+});
+
+self.addEventListener('fetch', function (e) {
+    console.log('[ServiceWorker] Fetch', e.request.url);
+    var dataUrl = new URL("./",self.location).href;//'https://henriquetgoncalves.github.io/';
+    if (e.request.url.indexOf(dataUrl) === 0) {
+        e.respondWith(
+            fetch(e.request)
+            .then(function (response) {
+                return caches.open(dataCacheName).then(function (cache) {
+                    cache.put(e.request.url, response.clone());
+                    console.log('[ServiceWorker] Fetched&Cached Data');
+                    return response;
+                });
+            })
+        );
     } else {
-      importScripts(scripts);
+        e.respondWith(
+            caches.match(e.request).then(function (response) {
+                return response || fetch(e.request);
+            })
+        );
     }
-  }
-  
-  if (global.params.get('skipWaiting') === 'true' && global.skipWaiting) {
-    global.addEventListener('install', function(e) {
-      e.waitUntil(global.skipWaiting());
-    });
-  }
-  
-  if (global.params.get('clientsClaim') === 'true' && global.clients && global.clients.claim) {
-    global.addEventListener('activate', function(e) {
-      e.waitUntil(global.clients.claim());
-    });
-  }
-})(self);
+});

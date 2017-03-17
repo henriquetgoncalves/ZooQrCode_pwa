@@ -387,7 +387,7 @@ body {
     background-color: #000;
 }
 
-.icon {
+.icon {    
     background-size: contain;
     background-repeat: no-repeat;
     min-height: 78px;
@@ -398,4 +398,20 @@ body {
     width: auto;
     border-radius: 100%;
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 2px 9px 1px rgba(0, 0, 0, 0.12), 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+}
+.icon_about {
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 78px;
+    min-width: 78px; 
+    max-height: 90%;
+    max-width: 90%; 
+    height: auto;
+    width: auto;
+    border-radius: 100%;    
+    
+}
+
+.app icon {
+    text-align: center;
 }

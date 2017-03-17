@@ -46,30 +46,26 @@
     </header>
     <main class="main">
         <div class="card cardTemplate zoo-qcode" style="text-align: center;">
-            <div class="app icon">
-                <img class="icon_about" src="images/icons/ic_repteis-128x128.png" />
-            </div>
+           <img class="icon_about" src="images/icons/ic_repteis-128x128.png" />
+
             <div class="Description_title">Descrição do Aplicativo</div>
-            <div class="description">
-                <p style="text-align: justify">O Zoo QrCode foi desenvolvido afim de facilitar e inovar a maneira de visualizar e obter conhecimento das características de cada animal.</p>
-                <p style="text-align: justify">Com apenas um toque, é possível ler o código de cada animal e encontrar em instantes as informações mais relevantes do mesmo.</p>
-                <p style="text-align: justify">Este aplicativo foi desenvolvido especialmente para você e seus filhos, e pode fornecer uma experiência mais amigável.</p>
-                <p style="text-align: justify">Obrigado por experimentar este App. =D</p>
+            <div class="description" >
+                <p style="text-align: center">O Zoo QrCode foi desenvolvido afim de facilitar e inovar a maneira de visualizar e obter conhecimento das características de cada animal.</p>
+                <p style="text-align: center">Com apenas um toque, é possível ler o código de cada animal e encontrar em instantes as informações mais relevantes do mesmo.</p>
+                <p style="text-align: center">Este aplicativo foi desenvolvido especialmente para você e seus filhos, e pode fornecer uma experiência mais amigável.</p>
+                <p style="text-align: center">Obrigado por experimentar este App. =D</p>
             </div>
         </div>
         <div class="card cardTemplate about zoo-qcode">
-            <div class="autor icon" style="display: inline-block;">
+            <div style="display: inline-block;">
                 <img class="icon_about" src="images/icons/ic_avatar-128x128.png" />
             </div>
             <div class="Description_subitem" style="display: inline-block">
-                <div>Viviane A. C. Gonçalves
-                    <br>Henrique T. Gonçalves
+                <div style="max-width:100%;max-height:100%">Henrique T. Gonçalves
+                    <br><br>
+                    <i class="material-icons">message</i><a id="message" target="_blank" href="#">Contatar via Whatsapp...</a>
                     <br>
-                    <i class="material-icons">message</i>
-                    <a id="message" target="_blank" href="#">Contatar via Whatsapp...</a>
-                    <br>
-                    <i class="material-icons">mail</i>
-                    <a id="mail" href="mailto:henrique.develop@hotmail.com;vivy_vac@hotmail.com">Contatar via e-mail..</a>
+                    <i class="material-icons">mail</i><a id="mail" href="mailto:henrique.develop@hotmail.com">Contatar via e-mail..</a>
                     <br>
                 </div>
             </div>
@@ -78,9 +74,9 @@
 </body>
 <script type="text/javascript">
     window.onload = function () {
-        if (!detectar_mobile()) {            
+        if (!detectar_mobile()) {
             document.getElementById("message").href = "tel:+5511982357499";
-        }else{
+        } else {
             document.getElementById("message").href = "intent:+5511982357499#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end";
         }
     }
