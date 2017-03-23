@@ -42,7 +42,7 @@ var getData = function (key) {
         // Make the XHR to get the data, then update the card
         var request = new XMLHttpRequest();
 
-        request.onreadystatechange = function () {
+        request.onreadystatechange = (function () {
             if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
                 results = JSON.parse(request.response);
                 console.log("getting data for URL=" + url);
@@ -56,7 +56,7 @@ var getData = function (key) {
                     createCard(key, results);
                 }
             }
-        };
+        });
         request.open('GET', url);
         request.send();
 

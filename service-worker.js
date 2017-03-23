@@ -8,6 +8,7 @@ var filesToCache = [
     './qrcode-scanner.html',
     './map.html',
     './list.html',
+    './list.html?type=classes&tela=list',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     './decoder.min.js',
     './JSONdata/animals.json',
@@ -73,7 +74,7 @@ self.addEventListener('activate', function (e) {
 self.addEventListener('fetch', function (e) {
     console.log('[ServiceWorker] Fetch', e.request.url);
     var dataUrl = new URL("./",self.location).href;//'https://henriquetgoncalves.github.io/';
-    if (e.request.url.indexOf(dataUrl) === 0) {
+    if (e.request.url.indexOf(dataUrl) === 0 && navigator.onLine) {
         e.respondWith(
             fetch(e.request)
             .then(function (response) {
