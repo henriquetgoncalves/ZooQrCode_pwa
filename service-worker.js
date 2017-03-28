@@ -13,20 +13,20 @@ var filesToCache = [
     './decoder.min.js',
     './JSONdata/animals.json',
     './JSONdata/classes.json',
-    './JSONdata/leao.json',    
-    './JSONdata/chimpanze.json',    
+    './JSONdata/leao.json',
+    './JSONdata/chimpanze.json',
     './scripts/app.js',
     './scripts/dialog-polyFill.js',
     './scripts/main.js',
     './scripts/menu.js',
     './scripts/parallax.js',
-    './scripts/snackbar.js',    
+    './scripts/snackbar.js',
     './scripts/material.min.js',
     './scripts/vendor/qrscan.js',
     './scripts/vendor/animaldata.js',
     './scripts/vendor/list.js',
     './styles/dialog-polyFill.css',
-    './styles/inline.css',    
+    './styles/inline.css',
     './styles/qrcode.css',
     './styles/dashboard.css',
     './styles/material.indigo-pink.min.css',
@@ -44,7 +44,7 @@ var filesToCache = [
     './images/icons/ic_avatar-128x128.png',
     './images/animals/animals_band.gif',
     './images/animals/header.jpg',
-    './images/animals/mapa_zoologico.gif'    
+    './images/animals/mapa_zoologico.gif'
 ];
 
 self.addEventListener('install', function (e) {
@@ -73,7 +73,7 @@ self.addEventListener('activate', function (e) {
 
 self.addEventListener('fetch', function (e) {
     console.log('[ServiceWorker] Fetch', e.request.url);
-    var dataUrl = new URL("./",self.location).href;//'https://henriquetgoncalves.github.io/';
+    var dataUrl = new URL("./", self.location).href; //'https://henriquetgoncalves.github.io/';
     if (e.request.url.indexOf(dataUrl) === 0 && navigator.onLine) {
         e.respondWith(
             fetch(e.request)
@@ -89,6 +89,21 @@ self.addEventListener('fetch', function (e) {
         e.respondWith(
             caches.match(e.request).then(function (response) {
                 return response || fetch(e.request);
+            }).catch(function (err) {
+                var body = "<h1>Ooops... Algo deu errado!</h1><br>";
+                    //body += "<img src='../animals/cat.gif'>"
+                            
+                var resp = new Response(body, {
+                        headers: {'Content-Type': 'text/html'}
+                      });
+
+                //var myRequest = new Request('./animals/cat.gif', myInit);
+
+                console.log('ServiceWorker registration failed: ', err);
+
+                return resp;
+                //throw new Error('Network response was not ok.');
+
             })
         );
     }
