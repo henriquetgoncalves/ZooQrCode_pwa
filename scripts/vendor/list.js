@@ -5,6 +5,12 @@ window.onload = function () {
     tela = gup('tela', location.search);
     filter = "";
 
+    document.querySelector('.header__title').textContent = item;
+    if (tela === "ameacados") {
+        btnVoltar.setAttribute("onclick", "location.href='index.html'");
+    } else if (tela === "list") {
+        btnVoltar.setAttribute("onclick", "location.href='list.html?type=classes&tela=list'");
+    }
     getData(tipo);
 }
 
@@ -28,7 +34,6 @@ var getData = function (key) {
                         btnVoltar.setAttribute("onclick", "location.href='index.html'");
                         listClasses(results);
                     } else if (key === "animals" && item) {
-                        btnVoltar.setAttribute("onclick", "location.href='list.html?type=classes&tela=list'");
                         listAnimals(results);
                     } else {
                         createCard(key, results);
@@ -79,7 +84,7 @@ var listItem = function (data) {
 }
 
 var createCard = function (id, data) {
-    
+
     if (item && tela == "ameacados") {
         filter = data.estado_conservacao;
     } else if (item && tela == "list") {
@@ -87,7 +92,7 @@ var createCard = function (id, data) {
     }
     if (filter) {
         filter = filter.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/ /g, "_");
-    }    
+    }
     if (tipo === "animals" && item == filter || tipo === "classes") {
         var cardTemplate = document.querySelector('#card_' + id);
         if (!cardTemplate) {
