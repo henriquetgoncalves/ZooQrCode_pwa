@@ -114,7 +114,7 @@ function cardClick(id) {
     } else if (tipo === "animals") {
         window.location.href = 'animal-detail.html?animal=' + id;
     }
-    window.navigator.vibrate([200,100]); // Vibrate 'SOS' in Morse.
+    window.navigator.vibrate([100]); 
 }
 
 function gup(name, url) {
