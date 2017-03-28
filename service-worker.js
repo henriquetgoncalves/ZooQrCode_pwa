@@ -92,7 +92,7 @@ self.addEventListener('fetch', function (e) {
             }).catch(function (err) {
                 var body = "<h1>Ooops... Algo deu errado!</h1><br>";
                     //body += "<img src='../animals/cat.gif'>"
-                            
+                alert('Passei aqui');
                 var resp = new Response(body, {
                         headers: {'Content-Type': 'text/html'}
                       });
