@@ -4,8 +4,7 @@ window.onload = function () {
     item = gup('item', location.search);
     tela = gup('tela', location.search);
     filter = "";
-
-    document.querySelector('.header__title').textContent = item;
+    
     if (tela === "ameacados") {
         btnVoltar.setAttribute("onclick", "location.href='index.html'");
     } else if (tela === "list") {
@@ -115,7 +114,7 @@ function cardClick(id) {
     } else if (tipo === "animals") {
         window.location.href = 'animal-detail.html?animal=' + id;
     }
-
+    window.navigator.vibrate([200,100]); // Vibrate 'SOS' in Morse.
 }
 
 function gup(name, url) {
