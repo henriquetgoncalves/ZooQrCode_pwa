@@ -114,7 +114,7 @@ function cardClick(id) {
     } else if (tipo === "animals") {
         window.location.href = 'animal-detail.html?animal=' + id;
     }
-    window.navigator.vibrate([100]); 
+    window.navigator.vibrate([100]);
 }
 
 function gup(name, url) {
