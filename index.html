@@ -51,17 +51,16 @@
                 </button>
 
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-lower-right">
-                    <!--<li id="menuItem_Refresh" class="mdl-menu__item">Refresh Cards</li>
-                    <li id="menuItem_Add" class="mdl-menu__item">Add City</li>-->
-                    <li id="menuItem_About" class="mdl-menu__item">Sobre o app</li>
-                    <li id="menuItem_Sair" class="mdl-menu__item">Sair</li>
-
+                    <li id="menuItem_About" class="mdl-menu__item"><i class="material-icons">info</i> Sobre o app</li>
+                    <li id="menuItem_Adm" class="mdl-menu__item">
+                        <i class="material-icons">supervisor_account</i> Administrativo
+                    </li>
                 </ul>
             </div>
         </header>
         <div class="mdl-layout__drawer">
-            <div class="mdl-layout-title"><img src="images/icons/icon-64x64.png"/></div>               
-                
+            <div class="mdl-layout-title"><img src="images/icons/icon-64x64.png" /></div>
+
             <nav class="mdl-navigation">
 
                 <a class="mdl-navigation__link" href="qrcode-scanner.html">
@@ -82,10 +81,10 @@
                 <a class="mdl-navigation__link" href="about.html">
                     <i class="material-icons">info</i> Sobre
                 </a>
-                <a class="mdl-navigation__link" onclick="menuItem_Sair.click()">
-                    <i class="material-icons">power_settings_new</i> Sair
-                </a>                
-                
+                <a class="mdl-navigation__link" href="private/administrative.html">
+                    <i class="material-icons">supervisor_account</i> Administrativo
+                </a>
+
 
             </nav>
         </div>
@@ -95,27 +94,6 @@
                 <button id="fabQrCodeScan" class="custom-btn">
                     <i class="material-icons custom-fab-icon">center_focus_strong</i>
                 </button>
-                <!--<dialog id="dialog" class="mdl-dialog">
-                    <h3 class="mdl-dialog__title">Add new city</h3>
-                    <div class="mdl-dialog__content">
-                        <div class="dialog-body">
-                            <select id="selectCityToAdd">
-                                <option value="austin">Austin, TX</option>
-                                <option value="boston">Boston, MA</option>
-                                <option value="chicago">Chicago, IL</option>
-                                <option value="portland">Portland, OR</option>
-                                <option value="sanfrancisco">San Francisco, CA</option>
-                                <option value="seattle">Seattle, WA</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="mdl-dialog__actions">
-                        <button id="dialog-button-AddCity" class="mdl-button dialog-button-add">Add</button>
-                        <button id="dialog-button-close" type="button" class="mdl-button dialog-button-close">Cancel</button>
-                        <button type="button" class="mdl-button" disabled>Disabled action</button>
-                    </div>
-                </dialog>-->
-
             </div>
             <script src="scripts/app.js" async></script>
             <script src="scripts/dialog-polyFill.js"></script>

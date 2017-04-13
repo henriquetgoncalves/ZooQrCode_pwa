@@ -10,10 +10,8 @@
     document.getElementById('menuItem_About').addEventListener('click', function () {
         window.location.href = "about.html";
     });
-
-    document.getElementById('menuItem_Sair').addEventListener('click', function () {
-        window.open(location, '_self', '');
-        window.close();
+    document.getElementById('menuItem_Adm').addEventListener('click', function (){
+        window.location.href = "private/administrative.html";
     });
 
     function isJson(str) {

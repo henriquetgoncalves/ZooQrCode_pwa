@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+
+    <!-- Material Design Lite -->
+    <link rel="stylesheet" href="../styles/material.indigo-pink.min.css">
+    <script defer src="../scripts/material.min.js"></script>
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Zoo QrCode - Administrativo</title>
+
+    <link rel="stylesheet" type="text/css" href="../styles/inline.css">
+    <link rel="stylesheet" type="text/css" href="../styles/dialog-polyFill.css" />
+    <link rel="manifest" href="../manifest.json">
+    <link rel="icon" href="../images/icons/icon-32x32.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Zoo QrCode">
+    <link rel="apple-touch-icon" href="../images/icons/icon-152x152.png">
+    <!-- Add to home screen for Windows -->
+    <meta name="msapplication-TileImage" content="../images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#1a9100">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#1a8f00">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Zoo QrCode" />
+    <meta name="msapplication-TileImage" content="../images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#1a8f00">
+    <meta name="theme-color" content="#1a8f00" />
+
+
+</head>
+
+<body>
+    <header class="header">
+        <button id="menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon" onclick="window.location.href = '../index.html'">
+            <i class="material-icons"> navigate_before</i>
+        </button>
+        <h1 class="header__title">Administrativo</h1>
+        <!-- Right aligned menu below button -->
+        <button id="btnLogout" class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">power_settings_new</i>
+        </button>
+    </header>
+    <main class="main">
+        <div id="loginPage" class="login-page">
+            <div class="form">
+                <form id="loginForm" class="login-form">
+                    <input type="Email" id="txtEmail" placeholder="Email" />
+                    <input type="password" id="txtPass" placeholder="Password" />
+                    <button id="btnLogin">login</button>
+                    <p class="message" style="display:none;">Not registered? <a href="#">Create an account</a></p>
+                </form>
+            </div>
+        </div>
+                <div class="content">
+            <h3 id="welcome_msg"></h3>
+        </div>
+    </main>
+</body>
+<script src="scripts/app_adm.js"></script>
+
+</html>
