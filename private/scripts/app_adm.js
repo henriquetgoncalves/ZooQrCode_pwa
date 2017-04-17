@@ -48,6 +48,7 @@
             console.log("Sign-out successful.");
         }, function (error) {
             console.log("An error happened. " + error.message);
+            alert("An error happened. " + error.message);
         });
     });
 
