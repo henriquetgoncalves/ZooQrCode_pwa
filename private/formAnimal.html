@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/snackbar.css">    
+
+    <!-- Material Design Lite -->
+    <link rel="stylesheet" href="../styles/material.indigo-pink.min.css">
+    <script defer src="../scripts/material.min.js"></script>
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Zoo QrCode - Administrativo</title>
+
+    <link rel="stylesheet" type="text/css" href="../styles/inline.css">
+    <link rel="stylesheet" type="text/css" href="../styles/dialog-polyFill.css" />
+    <link rel="manifest" href="../manifest.json">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+</head>
+<div id="animalPage" class="animal-page">
+    <div class="form">
+        <form id="animalForm" class="animal-form">
+            <h4>Dados do Animal</h4>
+            <div >
+                <img id="imgAnimal" height="200px" width="200px" accept="image/gif, image/jpeg, image/png">
+                <input type="file" id="fileselect" onchange="readURL(this);"/>
+            </div>
+            <input type="text" id="txtNome" placeholder="Nome" />
+            <input type="text" id="txtNomeCientifico" placeholder="Nome Cientifico" />
+            <select>
+                <option>Ameaçado de Extinção</option>
+                <option>Extinto</option>
+                <option>Pouco Preocupante</option>
+            </select>
+            <h4>Classificação Científica</h4>
+            <input type="text" id="txtReino" placeholder="Reino" />            
+            <select>
+                <option>Anfíbios</option>
+                <option>Aracnídeos</option>
+                <option>Aves</option>
+                <option>Mamíferos</option>
+                <option>Répteis</option>
+                <option>Peixes</option>
+            </select>
+            <input type="text" id="txtOrdem" placeholder="Ordem" />
+            <input type="text" id="txtFamilia" placeholder="Família" />
+            <input type="text" id="txtEspecie" placeholder="Espécie" />
+            <textarea id="txtDistribuicao_geo_habitat" rows="4" cols="50" name="comment" placeholder="Distribuição Geográfica e Habitat"></textarea>
+            <textarea id="txtCaracteristica" rows="5" cols="50" name="comment" placeholder="Características"></textarea>
+            <textarea id="txtDieta_habitos_alimentares" rows="2" cols="50" name="comment" placeholder="Dieta e Hábitos Alimentares"></textarea>
+            <textarea id="txtReproducao" rows="3" cols="50" name="comment" placeholder="Reprodução"></textarea>
+
+            <button id="btnCancelar">Cancelar</button>
+            <button id="btnSalvar">Salvar</button>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgAnimal')
+                        .attr('src', e.target.result)
+                        .width("100%")
+                        .height("100%")                       
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>
+</html>

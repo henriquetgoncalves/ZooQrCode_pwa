@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase.js"></script>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/snackbar.css">
 
     <!-- Material Design Lite -->
     <link rel="stylesheet" href="../styles/material.indigo-pink.min.css">
@@ -53,7 +54,7 @@
         </button>
     </header>
     <main class="main">
-        <div id="loginPage" class="login-page">
+        <div id="loginPage" class="login-page" style="display:none;">
             <div class="form">
                 <form id="loginForm" class="login-form">
                     <input type="Email" id="txtEmail" placeholder="Email" />
@@ -63,11 +64,19 @@
                 </form>
             </div>
         </div>
-                <div class="content">
+        <div id="content" class="content" style="display:none">
             <h3 id="welcome_msg"></h3>
+            <div>
+                <iframe width="800" height="100%" src="./formAnimal.html" onchange="resizeIframe(this);" onload="resizeIframe(this);" scrolling="yes"></iframe>
+            </div>
         </div>
     </main>
+    <div id="snackbar"></div>
 </body>
 <script src="scripts/app_adm.js"></script>
-
+<script>
+  function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  }
+</script>
 </html>
