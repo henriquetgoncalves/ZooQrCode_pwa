@@ -12,7 +12,7 @@
     firebase.initializeApp(config);
 
     const auth = firebase.auth();
-    const storage = firebase.storage();
+    const storage = firebase.storage(); 
     const database = firebase.database();
     const loginPage = document.getElementById('loginPage');
     const content = document.getElementById('content');
