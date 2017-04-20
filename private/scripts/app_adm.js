@@ -161,7 +161,9 @@ function saveAnimal() {
     
     var fileselected = document.getElementById('fileselect').files[0];
 
-    var uploadTask = storageRef.put(fileselected);
+    var uploadTask = storageRef.put(fileselected).catch(e=>{
+        alert(e.code +"-"+ e.message);
+    });
     uploadTask.on('state_changed', function progress(snapshot) {
         console.log(snapshot.totalBytesTransferred); // progress of upload
     });    
@@ -195,6 +197,7 @@ function delAnimal(){
     }).catch(function(error) {
         // Uh-oh, an error occurred!
         console.log(error.code + " - " + error.message);
+        snackbar_show(error.code + " - " + error.message);
     });
 
     //Remove in firebase database for animals
@@ -203,8 +206,9 @@ function delAnimal(){
         // File deleted successfully
         console.log("animal has removed");
     }).catch(function(error) {
-        // Uh-oh, an error occurred!
+        // An error occurred!
         console.log(error.code + " - " + error.message);
+        snackbar_show(error.code + " - " + error.message);
     });
 
     animalForm.reset();
