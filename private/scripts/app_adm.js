@@ -33,8 +33,9 @@
         const txtEmail = document.getElementById('txtEmail');
         const txtPass = document.getElementById('txtPass');
 
-        alert('tentativa de login');
-        return firebase.auth().signInWithEmailAndPassword(txtEmail.value, txtPass.value).catch(function (error) {
+        const promise = auth.signInWithEmailAndPassword(txtEmail.value, txtPass.value);
+        
+        promise.catch( error => {
             // Handle Errors here.
             console.log("Ocorreu erro ao logar: " + error.code + " - " + error.message);
             alert("Ocorreu erro ao logar: " + error.code + " - " + error.message);
