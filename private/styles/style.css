@@ -6,6 +6,7 @@
   margin: auto;
 }
 
+
 .form {
   position: relative;
   z-index: 1;
@@ -125,4 +126,4 @@ body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
-}
+}    

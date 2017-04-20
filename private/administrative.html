@@ -6,6 +6,8 @@
     <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase.js"></script>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/snackbar.css">
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 
     <!-- Material Design Lite -->
     <link rel="stylesheet" href="../styles/material.indigo-pink.min.css">
@@ -49,6 +51,18 @@
         </button>
         <h1 class="header__title">Administrativo</h1>
         <!-- Right aligned menu below button -->
+        <button id="btnAdd" onclick="return addForm(1)" class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons" >add</i>
+        </button>
+        <button id="btnDel" onclick="return delAnimal()" class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons" >delete</i>
+        </button>        
+        <button id="btnSave" onclick="return saveAnimal()" class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">done</i>
+        </button>        
+        <button id="btnCancel" onclick="return addForm(2)" class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">clear</i>
+        </button>
         <button id="btnLogout" class="mdl-button mdl-js-button mdl-button--icon">
             <i class="material-icons">power_settings_new</i>
         </button>
@@ -65,18 +79,79 @@
             </div>
         </div>
         <div id="content" class="content" style="display:none">
-            <h3 id="welcome_msg"></h3>
-            <div>
-                <iframe width="800" height="100%" src="./formAnimal.html" onchange="resizeIframe(this);" onload="resizeIframe(this);" scrolling="yes"></iframe>
+            <div id="listAnimal">
+                <div id="cardtemplate" class="cardList" style="position: center center; display:none;">
+                    <div style="display: inline-block;">
+                        <img class="icon" />
+                    </div>
+                    <div class="Description_title" style="display: inline-block">
+                        <div id="name" style="display: inline-block">Este é um teste de Título</div>
+                        <div id="sub" class="Description_subitem" style="display: inline-block">Este é um teste de Sub Item</div>
+                        <pre id="detail" style="display:none"></pre>
+                    </div>
+                    <hr></hr>
+                </div>
             </div>
-        </div>
+            <div id="animalDetail" style="display:none">
+                <div class="form">
+                    <form id="animalForm" class="animal-form">
+                        <h4>Dados do Animal</h4>
+                        <input type="text" id="txtID" placeholder="ID do Animal" style="display:none"/>
+                        <div>
+                            <img id="imgAnimal" height="100%" width="100%" style="display:none" accept="image/gif, image/jpeg, image/png">
+                            <input type="file" id="fileselect" onchange="readURL(this);" />
+                        </div>
+                        <input type="text" id="txtNome" placeholder="Nome" />
+                        <input type="text" id="txtNomeCientifico" placeholder="Nome Cientifico" />
+                        <select id="estado_conservacao">
+                            <option>Ameaçado de Extinção</option>
+                            <option>Extinto</option>
+                            <option>Pouco Preocupante</option>
+                        </select>
+                        <h4>Classificação Científica</h4>
+                        <input type="text" id="txtReino" placeholder="Reino" />
+                        <select id="classificacao">
+                            <option>Anfíbios</option>
+                            <option>Aracnídeos</option>
+                            <option>Aves</option>
+                            <option>Mamíferos</option>
+                            <option>Répteis</option>
+                            <option>Peixes</option>
+                        </select>
+                        <input type="text" id="txtOrdem" placeholder="Ordem" />
+                        <input type="text" id="txtFamilia" placeholder="Família" />
+                        <input type="text" id="txtEspecie" placeholder="Espécie" />
+                        <textarea id="txtDistribuicao_geo_habitat" rows="4" cols="50" name="comment" placeholder="Distribuição Geográfica e Habitat"></textarea>
+                        <textarea id="txtCaracteristica" rows="5" cols="50" name="comment" placeholder="Características"></textarea>
+                        <textarea id="txtDieta_habitos_alimentares" rows="2" cols="50" name="comment" placeholder="Dieta e Hábitos Alimentares"></textarea>
+                        <textarea id="txtReproducao" rows="3" cols="50" name="comment" placeholder="Reprodução"></textarea>
+                        <input type="text" id="txtQrCode" placeholder="ID do QrCode" />
+                    </form>
+                </div>
+            </div>
+        </div>       
+        <div id="snackbar"></div>
     </main>
-    <div id="snackbar"></div>
+
 </body>
 <script src="scripts/app_adm.js"></script>
 <script>
-  function resizeIframe(obj) {
-    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-  }
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgAnimal')
+                    .attr('src', e.target.result)
+                    .width("100%")
+                    .height("100%");
+                show(imgAnimal);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
 </script>
+
 </html>
