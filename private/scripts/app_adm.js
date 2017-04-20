@@ -37,10 +37,10 @@
         
         promise.catch( error => {
             // Handle Errors here.
-            console.log("Ocorreu erro ao logar: " + error.code + " - " + error.message);
-            alert("Ocorreu erro ao logar: " + error.code + " - " + error.message);
+            console.log("Ocorreu erro ao logar: " + error.code + " - " + error.message);            
             snackbar_show(error.message,10000);
         });
+        return promise;
     });
 
     btnLogout.addEventListener('click', e => {
