@@ -34,13 +34,12 @@
         const txtPass = document.getElementById('txtPass');
 
         alert('tentativa de login');
-        firebase.auth().signInWithEmailAndPassword(txtEmail.value, txtPass.value).catch(function (error) {
+        return firebase.auth().signInWithEmailAndPassword(txtEmail.value, txtPass.value).catch(function (error) {
             // Handle Errors here.
             console.log("Ocorreu erro ao logar: " + error.code + " - " + error.message);
             alert("Ocorreu erro ao logar: " + error.code + " - " + error.message);
             snackbar_show(error.message,10000);
         });
-        return false;
     });
 
     btnLogout.addEventListener('click', e => {
