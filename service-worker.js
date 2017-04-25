@@ -3,7 +3,6 @@ var cacheName = 'ZooQrCode_PWA_local';
 var filesToCache = [
     './',
     './index.html',
-    './private/administrative.html',
     './about.html',
     './animal-detail.html',
     './qrcode-scanner.html',

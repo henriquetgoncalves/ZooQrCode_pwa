@@ -188,9 +188,7 @@ function saveAnimal() {
     } else {
         snackbar_show("Atualizando o " + animal.nome + "...", 0);
         var promise = firebase.database().ref("tabelas/animais/" + id);
-        promise.update(animal);
-
-        promise.catch(e => {
+        promise.update(animal).catch(e => {
             snackbar_close();
             snackbar_show(e.error + "-" + e.message, 10000);
         });
