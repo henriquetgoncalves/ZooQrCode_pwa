@@ -158,7 +158,7 @@ function saveAnimal() {
         qrcode: document.getElementById('txtQrCode').value
     };
     if (id == "") {
-        snackbar_show("Incluindo o " + animal.nome + "...", 0);
+        snackbar_show("Incluindo o " + animal.nome + "...", 10000);
 
         // Get a key for a new Animal.    
         var newAnimalKey = firebase.database().ref().child('tabelas').child('animais').push().key;
@@ -186,7 +186,7 @@ function saveAnimal() {
             snackbar_show(e.error + "-" + e.message, 10000);
         });
     } else {
-        snackbar_show("Atualizando o " + animal.nome + "...", 0);
+        snackbar_show("Atualizando o " + animal.nome + "...", 10000);
         var promise = firebase.database().ref("tabelas/animais/" + id);
         promise.update(animal).catch(e => {
             snackbar_close();
