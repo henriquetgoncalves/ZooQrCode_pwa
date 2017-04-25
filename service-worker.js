@@ -76,17 +76,17 @@ self.addEventListener('activate', function (e) {
 
 self.addEventListener('fetch', function (e) {
     console.log('[ServiceWorker] Fetch', e.request.url);
-    var dataUrl = new URL("./", self.location).href; //'https://henriquetgoncalves.github.io/';
+    var dataUrl = new URL("./", self.location).href;
     if (e.request.url.indexOf(dataUrl) === 0 && navigator.onLine) {
         e.respondWith(
             fetch(e.request)
-            .then(function (response) {
-                return caches.open(dataCacheName).then(function (cache) {
-                    cache.put(e.request.url, response.clone());
-                    console.log('[ServiceWorker] Fetched&Cached Data');
-                    return response;
-                });
-            })
+                .then(function (response) {
+                    return caches.open(dataCacheName).then(function (cache) {
+                        cache.put(e.request.url, response.clone());
+                        console.log('[ServiceWorker] Fetched&Cached Data');
+                        return response;
+                    });
+                })
         );
     } else {
         e.respondWith(
@@ -94,19 +94,13 @@ self.addEventListener('fetch', function (e) {
                 return response || fetch(e.request);
             }).catch(function (err) {
                 var body = "<h1>Ooops... Algo deu errado!</h1><br>";
-                    //body += "<img src='../animals/cat.gif'>"
-                alert('Passei aqui');
                 var resp = new Response(body, {
-                        headers: {'Content-Type': 'text/html'}
-                      });
-
-                //var myRequest = new Request('./animals/cat.gif', myInit);
+                    headers: { 'Content-Type': 'text/html' }
+                });
 
                 console.log('ServiceWorker registration failed: ', err);
 
                 return resp;
-                //throw new Error('Network response was not ok.');
-
             })
         );
     }

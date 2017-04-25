@@ -212,7 +212,7 @@ function saveAnimal() {
     }
 
     addForm(2);
-
+    return false;
 }
 function delAnimal() {
 
