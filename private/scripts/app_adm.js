@@ -158,7 +158,7 @@ function saveAnimal() {
         qrcode: document.getElementById('txtQrCode').value
     };
     if (id == "") {
-        snackbar_show("Incluindo o " + animal.nome + "...", 10000G);
+        snackbar_show("Incluindo o " + animal.nome + "...", 10000);
 
         // Get a key for a new Animal.    
         var newAnimalKey = firebase.database().ref().child('tabelas').child('animais').push().key;
