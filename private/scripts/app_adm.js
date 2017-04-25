@@ -199,7 +199,7 @@ function saveAnimal() {
     addForm(2);
     snackbar_close();
 
-    return true;
+    return false;
 }
 function delAnimal() {
 
