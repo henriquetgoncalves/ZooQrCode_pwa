@@ -11,7 +11,7 @@
         window.location.href = "about.html";
     });
     document.getElementById('menuItem_Adm').addEventListener('click', function (){
-        window.location.href = "private/administrative.html";
+        window.location.href = "private/login.html";
     });
 
     function isJson(str) {

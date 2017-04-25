@@ -15,47 +15,21 @@
         storage = firebase.storage(),
         database = firebase.database(),
         animals = firebase.database().ref('tabelas/animais'),
-        loginPage = document.getElementById('loginPage'),
         content = document.getElementById('content'),
         listAnimal = document.getElementById('listAnimal'),
         animalDetail = document.getElementById('animalDetail'),
         animalForm = document.getElementById('animalForm'),
-        imgAnimal = document.getElementById('imgAnimal'),
-        snackbar = document.getElementById("snackbar"),
-        btnLogin = document.getElementById('btnLogin'),
+        imgAnimal = document.getElementById('imgAnimal'),        
         btnLogout = document.getElementById('btnLogout'),
         btnAdd = document.getElementById('btnAdd'),
         btnDel = document.getElementById('btnDel'),
         btnCancel = document.getElementById('btnCancel'),
         btnSave = document.getElementById('btnSave');
 
-    btnLogin.addEventListener('click', e => {
-        const txtEmail = document.getElementById('txtEmail');
-        const txtPass = document.getElementById('txtPass');
-
-        const promise = auth.signInWithEmailAndPassword(txtEmail.value, txtPass.value);
-
-        promise.catch(error => {
-            // Handle Errors here.
-            console.log("Ocorreu erro ao logar: " + error.code + " - " + error.message);
-            snackbar_show(error.message, 10000);
-        });
-        return promise;
-    });
-
-    btnLogout.addEventListener('click', e => {
-        firebase.auth().signOut().then(function () {
-            console.log("Sign-out successful.");
-        }, function (error) {
-            console.log("An error happened. " + error.message);
-        });
-    });
-
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             window.user = user;
             console.log("User is signed in.");
-            hide(loginPage);
             show(btnLogout);
             show(btnAdd);
             show(content);
@@ -64,7 +38,6 @@
             hide(btnSave);
         } else {
             console.log("No user is signed in.");
-            show(loginPage);
             hide(btnLogout);
             hide(content);
             hide(btnAdd);
@@ -72,6 +45,15 @@
             hide(btnCancel);
             hide(btnSave);
         }
+    });
+
+    btnLogout.addEventListener('click', e => {
+        firebase.auth().signOut().then(function () {
+            console.log("Sign-out successful.");
+            window.location.href = "./login.html";
+        }, function (error) {
+            console.log("An error happened. " + error.message);
+        });
     });
 
 
@@ -120,22 +102,6 @@ function hide(obj) {
 function show(obj) {
     obj.style.display = "block";
 }
-function snackbar_show(msg, timeout) {
-    snackbar.innerHTML = msg;
-
-    // Add the "show" class to DIV
-    snackbar.className = "show";
-
-    // After @timeout seconds, remove the show class from DIV
-    if (timeout > 0) {
-        setTimeout(function () {
-            snackbar_close();
-        }, timeout);
-    }
-}
-function snackbar_close() {
-    snackbar.className = snackbar.className.replace("show", "");
-}
 
 function saveAnimal() {
     // Create animal object
@@ -158,6 +124,7 @@ function saveAnimal() {
         reproducao: document.getElementById('txtReproducao').value,
         qrcode: document.getElementById('txtQrCode').value
     };
+    //add animal
     if (id == "") {
         snackbar_show("Incluindo " + animal.nome + "...", 10000);
 
@@ -169,12 +136,7 @@ function saveAnimal() {
         var uploadTask = storageRef.put(image).catch(e => {
             snackbar_close();
             snackbar_show(e.error + "-" + e.message, 10000);
-        });
-        uploadTask.on('state_changed', function progress(snapshot) {
-            console.log(snapshot.totalBytesTransferred); // progress of upload
-            snackbar_close();
-            snackbar_show(snapshot.totalBytesTransferred, 10000);
-        });
+        });        
 
         //Save in firebase database for animals
         var updates = {};
@@ -186,16 +148,16 @@ function saveAnimal() {
             snackbar_close();
             snackbar_show(e.error + "-" + e.message, 10000);
         });
-    } else {
-        snackbar_show("Atualizando " + animal.nome + "...", 10000);
+    }
+    //Update animal
+    else {
+        snackbar_show("Atualizando " + animal.nome + "...", 7000);
         var promise = firebase.database().ref("tabelas/animais/" + id);
 
         if (image) {
             // Get animal key storage reference - For remove image animal
             var storageRef = firebase.storage().ref("imagens/animais/" + id);
-            storageRef.delete().then(function () {
-                console.log("File deleted successfully");
-            }).catch(function (error) {
+            storageRef.delete().catch(function (error) {
                 console.log("Uh-oh, an error occurred on deleting file!");
             });
             // Uploading the file on storage firebase
@@ -203,12 +165,13 @@ function saveAnimal() {
                 snackbar_close();
                 snackbar_show(e.error + "-" + e.message, 10000);
             });
+            var currentCard = document.getElementById(id);
+            currentCard.querySelector('.icon').src = imgAnimal.src;
         }
         promise.update(animal).catch(e => {
             snackbar_close();
             snackbar_show(e.error + "-" + e.message, 10000);
         });
-        
     }
 
     addForm(2);
