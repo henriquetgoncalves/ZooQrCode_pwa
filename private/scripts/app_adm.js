@@ -14,8 +14,8 @@
     const auth = firebase.auth(),
         storage = firebase.storage(),
         database = firebase.database(),
-        animals = firebase.database().ref('tabelas/animais');
-    loginPage = document.getElementById('loginPage'),
+        animals = firebase.database().ref('tabelas/animais'),
+        loginPage = document.getElementById('loginPage'),
         content = document.getElementById('content'),
         listAnimal = document.getElementById('listAnimal'),
         animalDetail = document.getElementById('animalDetail'),
@@ -80,7 +80,7 @@
     });
 
     animals.on('child_changed', function (data) {
-        //setCommentValues(postElement, data.key, data.val().text, data.val().author);
+        createCard(data);
     });
 
     animals.on('child_removed', function (data) {
@@ -136,6 +136,7 @@ function snackbar_show(msg, timeout) {
 function snackbar_close() {
     snackbar.className = snackbar.className.replace("show", "");
 }
+
 function saveAnimal() {
     // Create animal object
     var id = document.getElementById('txtID').value;
@@ -158,7 +159,7 @@ function saveAnimal() {
         qrcode: document.getElementById('txtQrCode').value
     };
     if (id == "") {
-        snackbar_show("Incluindo o " + animal.nome + "...", 10000);
+        snackbar_show("Incluindo " + animal.nome + "...", 10000);
 
         // Get a key for a new Animal.    
         var newAnimalKey = firebase.database().ref().child('tabelas').child('animais').push().key;
@@ -186,18 +187,32 @@ function saveAnimal() {
             snackbar_show(e.error + "-" + e.message, 10000);
         });
     } else {
-        snackbar_show("Atualizando o " + animal.nome + "...", 10000);
+        snackbar_show("Atualizando " + animal.nome + "...", 10000);
         var promise = firebase.database().ref("tabelas/animais/" + id);
+
+        if (image) {
+            // Get animal key storage reference - For remove image animal
+            var storageRef = firebase.storage().ref("imagens/animais/" + id);
+            storageRef.delete().then(function () {
+                console.log("File deleted successfully");
+            }).catch(function (error) {
+                console.log("Uh-oh, an error occurred on deleting file!");
+            });
+            // Uploading the file on storage firebase
+            var uploadTask = storageRef.put(image).catch(e => {
+                snackbar_close();
+                snackbar_show(e.error + "-" + e.message, 10000);
+            });
+        }
         promise.update(animal).catch(e => {
             snackbar_close();
             snackbar_show(e.error + "-" + e.message, 10000);
         });
+        
     }
 
     addForm(2);
-    snackbar_close();
 
-    return false;
 }
 function delAnimal() {
 
@@ -245,8 +260,11 @@ function setImage(obj, key) {
     });
 }
 function createCard(data) {
-    var cardTemplate = document.getElementById('cardtemplate').cloneNode(true);
-    cardTemplate.id = data.key;
+    var cardTemplate = document.getElementById(data.key);
+    if (!cardTemplate) {
+        cardTemplate = document.getElementById('cardtemplate').cloneNode(true);
+        cardTemplate.id = data.key;
+    }
     setImage(cardTemplate.querySelector('.icon'), data.key);
     cardTemplate.querySelector('#name').textContent = data.val().nome;
     cardTemplate.querySelector('#sub').textContent = data.val().nome_cientifico;
@@ -257,6 +275,7 @@ function createCard(data) {
     document.getElementById('listAnimal').appendChild(cardTemplate);
     cardTemplate.style.display = null;
 }
+
 function removeCard(data) {
     var cardTemplate = document.getElementById(data.key);
     document.getElementById('listAnimal').removeChild(cardTemplate);
