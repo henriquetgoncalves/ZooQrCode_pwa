@@ -20,6 +20,7 @@
         animalDetail = document.getElementById('animalDetail'),
         animalForm = document.getElementById('animalForm'),
         imgAnimal = document.getElementById('imgAnimal'),        
+        btnBack = document.getElementById('btnBack'),
         btnLogout = document.getElementById('btnLogout'),
         btnAdd = document.getElementById('btnAdd'),
         btnDel = document.getElementById('btnDel'),
@@ -74,6 +75,8 @@ function addForm(state) {
     if (state == 1) {
         hide(listAnimal);
         hide(btnAdd);
+        hide(btnBack);
+        hide(btnLogout);
         show(btnCancel);
         show(btnSave);
         show(animalDetail);
@@ -81,6 +84,8 @@ function addForm(state) {
         show(listAnimal);
         show(btnAdd);
         hide(btnDel);
+        show(btnBack);
+        show(btnLogout);
         hide(btnCancel);
         hide(btnSave);
         hide(animalDetail);
@@ -89,6 +94,8 @@ function addForm(state) {
     } else if (state == 3) {
         hide(listAnimal);
         hide(btnAdd);
+        hide(btnBack);
+        hide(btnLogout);
         show(btnCancel);
         show(btnSave);
         show(btnDel);

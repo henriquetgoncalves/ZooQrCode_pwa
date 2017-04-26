@@ -46,11 +46,14 @@
 
 <body>
     <header class="header">
-        <button id="menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon" onclick="window.location.href = '../index.html'">
+        <button id="btnBack" class="mdl-button mdl-js-button mdl-button--icon" onclick="window.location.href = '../index.html'">
             <i class="material-icons"> navigate_before</i>
         </button>
-        <button id="menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon" onclick="alert(firebase.auth().currentUser.email);">
+        <button id="test" class="mdl-button mdl-js-button mdl-button--icon" onclick="alert(firebase.auth().currentUser.email);">
             <i class="material-icons orange600">face</i>
+        </button>
+        <button id="btnCancel" class="mdl-button mdl-js-button mdl-button--icon" onclick="return addForm(2)">
+            <i class="material-icons">clear</i>
         </button>        
         <h1 class="header__title">Admin</h1>
         <!-- Right aligned menu below button -->
@@ -63,9 +66,6 @@
         <button id="btnSave" onclick="return saveAnimal()" class="mdl-button mdl-js-button mdl-button--icon">
             <i class="material-icons">done</i>
         </button>        
-        <button id="btnCancel" onclick="return addForm(2)" class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">clear</i>
-        </button>
         <button id="btnLogout" class="mdl-button mdl-js-button mdl-button--icon">
             <i class="material-icons">power_settings_new</i>
         </button>
@@ -87,7 +87,7 @@
             </div>
             <div id="animalDetail" style="display:none">
                 <div class="form">
-                    <form id="animalForm" class="animal-form">
+                    <div id="animalForm" class="animal-form">
                         <h4>Dados do Animal</h4>
                         <input type="text" id="txtID" placeholder="ID do Animal" style="display:none"/>
                         <div>
@@ -119,7 +119,7 @@
                         <textarea id="txtDieta_habitos_alimentares" rows="2" cols="50" name="comment" placeholder="Dieta e Hábitos Alimentares"></textarea>
                         <textarea id="txtReproducao" rows="3" cols="50" name="comment" placeholder="Reprodução"></textarea>
                         <input type="text" id="txtQrCode" placeholder="ID do QrCode" />
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>       
