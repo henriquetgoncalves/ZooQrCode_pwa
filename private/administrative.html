@@ -49,7 +49,10 @@
         <button id="menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon" onclick="window.location.href = '../index.html'">
             <i class="material-icons"> navigate_before</i>
         </button>
-        <h1 class="header__title">Administrativo</h1>
+        <button id="menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon" onclick="alert(firebase.auth().currentUser.email);">
+            <i class="material-icons orange600">face</i>
+        </button>        
+        <h1 class="header__title">Admin</h1>
         <!-- Right aligned menu below button -->
         <button id="btnAdd" onclick="return addForm(1)" class="mdl-button mdl-js-button mdl-button--icon">
             <i class="material-icons" >add</i>
