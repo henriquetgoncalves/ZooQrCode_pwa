@@ -172,10 +172,27 @@ function saveAnimal() {
                 console.log("Uh-oh, an error occurred on deleting file!");
             });
             // Uploading the file on storage firebase
-            var uploadTask = storageRef.put(image).catch(e => {
+            var uploadTask = storageRef.put(image);
+
+            // Register three observers:
+            // 1. 'state_changed' observer, called any time the state changes
+            // 2. Error observer, called on failure
+            // 3. Completion observer, called on successful completion
+            uploadTask.on('state_changed', function(snapshot){
+                // Observe state change events such as progress, pause, and resume
+                // See below for more detail
+                
+            }, function(error) {
+                // Handle unsuccessful uploads
                 snackbar_close();
-                snackbar_show(e.error + "-" + e.message, 10000);
-            });
+                snackbar_show(e.error + " - " + e.message, 20000);
+            }, function() {
+                // Handle successful uploads on complete
+                // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                var downloadURL = uploadTask.snapshot.downloadURL;
+                snackbar_close();
+                snackbar_show(downloadURL, 20000);                
+            });            
             var currentCard = document.getElementById(id);
             currentCard.querySelector('.icon').src = imgAnimal.src;
         }
