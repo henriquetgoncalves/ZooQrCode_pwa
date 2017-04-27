@@ -15,6 +15,7 @@
         storage = firebase.storage(),
         database = firebase.database(),
         animals = firebase.database().ref('tabelas/animais'),
+        title = document.getElementById('title'),
         content = document.getElementById('content'),
         listAnimal = document.getElementById('listAnimal'),
         animalDetail = document.getElementById('animalDetail'),
@@ -73,6 +74,7 @@
 })();
 function addForm(state) {
     if (state == 1) {
+        title.innerText="";
         hide(listAnimal);
         hide(btnAdd);
         hide(btnBack);
@@ -81,6 +83,7 @@ function addForm(state) {
         show(btnSave);
         show(animalDetail);
     } else if (state == 2) {
+        title.innerText="Animais";
         show(listAnimal);
         show(btnAdd);
         hide(btnDel);
@@ -92,6 +95,7 @@ function addForm(state) {
         animalForm.reset();
         imgAnimal.src = "#";
     } else if (state == 3) {
+        title.innerText="";
         hide(listAnimal);
         hide(btnAdd);
         hide(btnBack);
@@ -182,7 +186,7 @@ function saveAnimal() {
     }
 
     addForm(2);
-    return false;
+    //return false;
 }
 function delAnimal() {
 
