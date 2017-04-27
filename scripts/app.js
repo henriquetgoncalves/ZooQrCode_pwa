@@ -14,6 +14,10 @@
         window.location.href = "private/login.html";
     });
 
+    document.getElementById('dashboard').then(function(this){
+        this.style.url="../images/animals/animals_band.gif";
+    });
+
     function isJson(str) {
         try {
             JSON.parse(str);
