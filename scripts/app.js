@@ -14,7 +14,7 @@
         window.location.href = "private/login.html";
     });
 
-    document.getElementById('dashboard').style.backgroundImage="url(../images/animals/animals_band.gif)";
+    document.getElementById('dashboard').style.backgroundImage="url(images/animals/animals_band.gif)";
 
     function isJson(str) {
         try {
