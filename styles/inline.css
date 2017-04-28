@@ -242,53 +242,74 @@ body {
     transition: transform 0.333s cubic-bezier(0, 0, 0.21, 1) 0.05s, -webkit-transform 0.333s cubic-bezier(0, 0, 0.21, 1) 0.05s;
     padding: 24px;
 }
-
+.chip {
+    display: inline-block;
+    height: 32px;
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(0,0,0,0.6);
+    line-height: 32px;
+    padding: 2px 12px;
+    border-radius: 16px;
+    background-color: #e4e4e4;    
+}
+.chip .icon {    
+    float: left;
+    margin: 0 8px 0 -12px;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+}
+.chip:hover {background-color: #D3D3D3;}
+.chip:onclick {background-color: #e1e1e1;}
 .card {
-    min-height: 96px;    
-    min-width: 200px;    
-    padding: 16px;
+    min-height: 100px;    
+    min-width: 100px;    
+    padding: 5px;
     position: relative;
     box-sizing: border-box;
     background: #fff;
     border-radius: 2px;
-    margin: 16px;
+    margin: 5px 16px 5px 16px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
-.cardList {
+.card .icon{
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 80px;
+    min-width: 80px;     
+    max-height: 80px;
+    max-width: 80px; 
+    height: auto;
+    width: auto;
+    border-radius: 10%;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 2px 9px 1px rgba(0, 0, 0, 0.12), 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+}
+
+.listAnimal {
     min-height: 96px;    
     min-width: 200px;    
     padding: 5px;
     position: relative;
-    /*box-sizing: border-box;
-    background: #1a8f00;
-    border-radius: 2px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);*/
-    margin: 15px;    
+    margin: 5px 16px 1px 16px;  
 }
-.cardList:hover {background-color: #e1e1e1;}
-.cardList:onclick {background-color: #e1e1e1;}
-
+.listAnimal:hover {background-color: #e1e1e1;}
+.listAnimal:onclick {background-color: #e1e1e1;}
+.listAnimal .icon{
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 80px;
+    min-width: 80px;     
+    max-height: 80px;
+    max-width: 80px; 
+    height: auto;
+    width: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 2px 9px 1px rgba(0, 0, 0, 0.12), 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+}
 
 #info_classificacao:hover {background-color: #e1e1e1;}
 #info_classificacao:onclick {background-color: #e1e1e1;}
-
-@media (max-width: 450px) {
-    .weather-forecast .date,
-    .weather-forecast .description {
-        font-size: 0.9em;
-    }
-    .weather-forecast .current .icon {
-        width: 96px;
-        height: 96px;
-    }
-    .weather-forecast .current .visual {
-        font-size: 3em;
-    }
-    .weather-forecast .future .oneday .icon {
-        width: 32px;
-        height: 32px;
-    }
-}
 
 .mdl-dialog {
     border: none;
@@ -400,18 +421,7 @@ body {
     background-color: #000;
 }
 
-.icon {    
-    background-size: contain;
-    background-repeat: no-repeat;
-    min-height: 78px;
-    min-width: 78px;     
-    max-height: 96px;
-    max-width: 96px; 
-    height: auto;
-    width: auto;
-    border-radius: 100%;
-    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 2px 9px 1px rgba(0, 0, 0, 0.12), 0 4px 2px -2px rgba(0, 0, 0, 0.2);
-}
+
 .icon_about {
     background-size: contain;
     background-repeat: no-repeat;

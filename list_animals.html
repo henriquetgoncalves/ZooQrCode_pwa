@@ -44,16 +44,36 @@
         <h1 class="header__title">Listagem</h1>
     </header>
     <main class="main">
-        <div class="card cardTemplate zoo-qcode" style="display:none; position: center center;">
-            <div style="display: inline-block;">
-                <img class="icon" />
-            </div>
-            <div class="Description_title" style="display: inline-block">
-                <div id="name" style="display: inline-block"></div>                            
+
+        </div>
+        <div id="list_classes" class = "listAnimals">
+            <!--Card template for list itens-->
+            <div id="classes" style="position: center center; display:none;">
+                    <img class="icon"/>
+                <div class="Description_title" style="display: inline-block">
+                    <div id="name" style="display: inline-block">Este é um teste de Título</div>
+                    <div id="sub" class="Description_subitem" style="display: inline-block">Este é um teste de Sub Item</div>
+                    <pre id="detail" style="display:none"></pre>
+                </div>
             </div>            
         </div>
+        <div id="list_animals" class="listAnimals">
+            <p>Listagem de Animais</p>
+            <!--Card template for list itens-->
+            <div class="listAnimal" id="animais" style="position: center center; display:none;">
+                <div style="display: inline-block;">
+                    <img class="icon" />
+                </div>
+                <div class="Description_title" style="display: inline-block">
+                    <div id="name" style="display: inline-block">Este é um teste de Título</div>
+                    <div id="sub" class="Description_subitem" style="display: inline-block">Este é um teste de Sub Item</div>
+                    <pre id="detail" style="display:none"></pre>
+                </div>
+                <hr></hr>
+            </div>
     </main>
+
 </body>
-<script src="scripts/vendor/list.js"></script>
+<script src="scripts/vendor/list_animals.js"></script>
 
 </html>

@@ -1,5 +1,21 @@
 var btnVoltar = document.getElementById('menu-lower-left');
 window.onload = function () {
+
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAKkqHvQucpECLDE-n7r8RjHoiIDya86gM",
+        authDomain: "zooqrcode.firebaseapp.com",
+        databaseURL: "https://zooqrcode.firebaseio.com",
+        projectId: "zooqrcode",
+        storageBucket: "zooqrcode.appspot.com",
+        messagingSenderId: "373519758441"
+    };
+    firebase.initializeApp(config);
+
+    const auth = firebase.auth(),
+        storage = firebase.storage(),
+        animals = firebase.database().ref('tabelas/animais');
+
     tipo = gup('type', location.search);
     item = gup('item', location.search);
     tela = gup('tela', location.search);
@@ -11,7 +27,14 @@ window.onload = function () {
         btnVoltar.setAttribute("onclick", "location.href='list.html?type=classes&tela=list'");
     }
     getData(tipo);
+
+
+    animals.on('child_added', snapshot => {
+        console.log(JSON.stringify(snapshot.val()));
+    });    
 }
+
+
 
 var getData = function (key) {
     var url = new URL("./", self.location).href + '/JSONdata/' + key + '.json';

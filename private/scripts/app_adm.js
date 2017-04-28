@@ -92,7 +92,7 @@ function addForm(state) {
         hide(btnCancel);
         hide(btnSave);
         hide(animalDetail);
-        animalForm.reset();
+        //animalForm.reset();
         imgAnimal.src = "#";
     } else if (state == 3) {
         title.innerText="";
@@ -164,7 +164,10 @@ function saveAnimal() {
     else {
         snackbar_show("Atualizando " + animal.nome + "...", 7000);
         var promise = firebase.database().ref("tabelas/animais/" + id);
-
+        promise.update(animal).catch(e => {
+            snackbar_close();
+            snackbar_show(e.error + "-" + e.message, 10000);
+        });
         if (image) {
             // Get animal key storage reference - For remove image animal
             var storageRef = firebase.storage().ref("imagens/animais/" + id);
@@ -195,11 +198,7 @@ function saveAnimal() {
             });            
             var currentCard = document.getElementById(id);
             currentCard.querySelector('.icon').src = imgAnimal.src;
-        }
-        promise.update(animal).catch(e => {
-            snackbar_close();
-            snackbar_show(e.error + "-" + e.message, 10000);
-        });
+        }        
     }
 
     addForm(2);
@@ -239,7 +238,7 @@ function delAnimal() {
     });
 
 
-    animalForm.reset();
+    //animalForm.reset();
     addForm(2);
     snackbar_show("Registro excluído com sucesso!", 6000);
 }

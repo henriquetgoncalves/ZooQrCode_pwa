@@ -6,7 +6,7 @@
 .mdl-layout-title img {
     margin:10px;
 }
-body{
+#dashboard{
     /*background-image: url(../images/animals/animals_band.gif);*/
     background-position: center center;
     background-repeat: no-repeat;

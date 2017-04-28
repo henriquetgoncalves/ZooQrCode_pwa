@@ -33,22 +33,8 @@ firebase.auth().onAuthStateChanged(function (user) {
         window.user = user;
         console.log("User is signed in.");
         window.location.href = "./administrative.html";
-        /*hide(loginPage);
-        show(btnLogout);
-        show(btnAdd);
-        show(content);
-        hide(btnDel);
-        hide(btnCancel);
-        hide(btnSave);*/
     } else {
         console.log("No user is signed in.");
-        /*show(loginPage);
-        hide(btnLogout);
-        hide(content);
-        hide(btnAdd);
-        hide(btnDel);
-        hide(btnCancel);
-        hide(btnSave);*/
     }
 });
 
