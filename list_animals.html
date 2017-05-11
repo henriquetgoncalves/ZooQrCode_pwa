@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="styles/material.indigo-pink.min.css">
     <script defer src="scripts/material.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase.js"></script>
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <meta charset="utf-8">
@@ -38,27 +40,29 @@
 
 <body>
     <header class="header">
-        <button id="menu-lower-left"  onclick="window.location.href = 'index.html'" class="mdl-button mdl-js-button mdl-button--icon">
+        <button id="menu-lower-left" onclick="window.location.href = 'index.html'" class="mdl-button mdl-js-button mdl-button--icon">
             <i class="material-icons"> navigate_before</i>
         </button>
         <h1 class="header__title">Listagem</h1>
     </header>
     <main class="main">
-
-        </div>
-        <div id="list_classes" class = "listAnimals">
+        <div class="loader">
+            <svg viewBox="0 0 32 32" width="32" height="32">
+                <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+            </svg>
+        </div>        
+        <div id="list_classes" class="listAnimals">
             <!--Card template for list itens-->
             <div id="classes" style="position: center center; display:none;">
-                    <img class="icon"/>
+                <img class="icon" />
                 <div class="Description_title" style="display: inline-block">
                     <div id="name" style="display: inline-block">Este é um teste de Título</div>
                     <div id="sub" class="Description_subitem" style="display: inline-block">Este é um teste de Sub Item</div>
                     <pre id="detail" style="display:none"></pre>
                 </div>
-            </div>            
+            </div>
         </div>
         <div id="list_animals" class="listAnimals">
-            <p>Listagem de Animais</p>
             <!--Card template for list itens-->
             <div class="listAnimal" id="animais" style="position: center center; display:none;">
                 <div style="display: inline-block;">

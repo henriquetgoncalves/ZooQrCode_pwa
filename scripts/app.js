@@ -1,8 +1,17 @@
 (function () {
-    /*****************************************************************************
-     *
-     * Event listeners for UI elements
-     * ****************************************************************************/
+
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAKkqHvQucpECLDE-n7r8RjHoiIDya86gM",
+        authDomain: "zooqrcode.firebaseapp.com",
+        databaseURL: "https://zooqrcode.firebaseio.com",
+        projectId: "zooqrcode",
+        storageBucket: "zooqrcode.appspot.com",
+        messagingSenderId: "373519758441"
+    };
+    firebase.initializeApp(config);
+    const auth = firebase.auth();
+
     document.getElementById('fabQrCodeScan').addEventListener('click', function () {
         window.location.href = "qrcode-scanner.html";
     });
@@ -11,10 +20,12 @@
         window.location.href = "about.html";
     });
     document.getElementById('menuItem_Adm').addEventListener('click', function (){
-        window.location.href = "private/login.html";
+        if (!auth){
+            window.location.href = "private/login.html";
+        }else{            
+            window.location.href = "private/administrative.html";
+        }        
     });
-
-    document.getElementById('dashboard').style.backgroundImage="url(images/animals/animals_band.gif)";
 
     function isJson(str) {
         try {
@@ -25,7 +36,7 @@
         return true;
     }
     var getData = function (key) {
-        var url = new URL("./",self.location).href + key ; //'https://henriquetgoncalves.github.io/ZooQrCode_wpa/' + key + '';
+        var url = new URL("./",self.location).href + key;
 
         if ('caches' in window) {
             /*
@@ -98,3 +109,6 @@
     }
 
 })();
+
+
+$().ready( document.getElementById('dashboard').style.backgroundImage="url(images/animals/animals_band.gif)");
