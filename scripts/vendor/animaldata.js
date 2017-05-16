@@ -88,7 +88,7 @@ function setImage(obj,ref,key) {
     var data = sessionStorage.getItem(key);
     if (!data) {
         try {
-            storageRef.getDownloadURL().then(function (url) {                
+            storageRef.getDownloadURL().then(function (url)  {                
                 obj.src = url;
             });
         }catch (e){
