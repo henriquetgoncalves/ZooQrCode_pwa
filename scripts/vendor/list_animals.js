@@ -74,6 +74,7 @@ function createCard(data, type) {
         cardTemplate.classList.add(x);
         cardTemplate.addEventListener("click", function () {
             $('#list_animals .animais').hide();
+            $('#list_classes').fadeOut();
             $('#list_animals .' + x).show();
         });
     }

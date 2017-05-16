@@ -43,7 +43,7 @@
 <body>
 
     <header id="header" class="header">
-        <button id="menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon" onclick="window.location.href = 'index.html'">
+        <button id="menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon" onclick="window.history.back();">
             <i class="material-icons">navigate_before</i>
         </button>
         <h1 class="header__title"> </h1>
@@ -51,10 +51,9 @@
             <i class="material-icons">center_focus_strong</i>
         </button> 
     </header>
-    <main class="main-parallax">
-
+    <main class="main-parallax" >
         <div id="list_animals" class="listAnimals">
-            <div style="display: inline-block; padding:  5px 16px 5px 16px;">
+            <div style="display: inline-block; padding: 5px 16px 5px 16px;min-width: 100px; width: 100%;text-align:center;">
                 <img class="icon" style="max-width: 100%; " id="image__animal" />
             </div>
 
