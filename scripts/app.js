@@ -20,7 +20,7 @@
         window.location.href = "about.html";
     });
     document.getElementById('menuItem_Adm').addEventListener('click', function (){
-        if (!auth){
+        if (!auth.currentUser){
             window.location.href = "private/login.html";
         }else{            
             window.location.href = "private/administrative.html";

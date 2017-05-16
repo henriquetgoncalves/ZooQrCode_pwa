@@ -60,7 +60,7 @@ if (app.isLoading) {
 
 updateAnimalCard = function (data) {
     app.header.querySelector('.header__title').textContent = data.nome;
-    app.container.querySelector('#image__animal').style.backgroundImage = "url("+ getImage("animais",key) + ")";
+    setImage(app.container.querySelector('#image__animal'),"animais",key);
     app.container.querySelector('.nome_cientifico').textContent = data.nome_cientifico;
     app.container.querySelector('.estado_conservacao').textContent = data.estado_conservacao;
     app.container.querySelector('#info_reino').textContent = data.classificacao.reino;
@@ -83,19 +83,19 @@ function gup(name, url) {
     return results == null ? null : results[1];
 }
 
-function getImage(ref,key) {
+function setImage(obj,ref,key) {
     var storageRef = firebase.storage().ref("imagens/" + ref + "/" + key);
     var data = sessionStorage.getItem(key);
     if (!data) {
         try {
             storageRef.getDownloadURL().then(function (url) {                
-                return url;
+                obj.src = url;
             });
         }catch (e){
             console.log(e.code + "-" + e.message);
         }
     }else {
-        return data;        
+        obj.src = url;
     }
 
 }

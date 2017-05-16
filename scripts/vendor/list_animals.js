@@ -1,6 +1,7 @@
 var btnVoltar = document.getElementById('menu-lower-left');
+var parameter = gup('par', location.search);
 
-// Initialize Firebase
+// nitialize Firebase
 var config = {
     apiKey: "AIzaSyAKkqHvQucpECLDE-n7r8RjHoiIDya86gM",
     authDomain: "zooqrcode.firebaseapp.com",
@@ -13,10 +14,14 @@ firebase.initializeApp(config);
 
 const auth = firebase.auth(),
     storage = firebase.storage(),
-    classes = firebase.database().ref('tabelas/classes'),
-    animals = firebase.database().ref('tabelas/animais'),
+    classes = firebase.database().ref('tabelas/classes'),    
     list_animals = document.getElementById('list_animals'),
     list_classes = document.getElementById('list_classes');
+    
+var animals = firebase.database().ref('tabelas/animais');
+
+if(parameter)
+    animals = animals.orderByChild("estado_conservacao").equalTo("Ameaçado de Extinção");
 
 classes.on('child_added', data => {
     createCard(data, { element: list_classes, ref: "classes" });
@@ -109,4 +114,12 @@ function replaceSpecialChars(str) {
     str = str.replace(/[Ç]/, "C");
     str = str.replace(/[ç]/, "c");
     return str.replace(/[^a-z0-9]/gi, '').toLowerCase();
+}
+function gup(name, url) {
+    if (!url) url = location.href;
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regexS = "[\\?&]" + name + "=([^&#]*)";
+    var regex = new RegExp(regexS);
+    var results = regex.exec(url);
+    return results == null ? null : results[1];
 }
