@@ -292,3 +292,6 @@ function loadAnimalDetail(obj) {
     addForm(3);
 }
 
+$(document).keyup(function(e) {
+  if (e.keyCode === 27) $('#btnCancel').click();   // esc
+});

@@ -109,6 +109,4 @@
     }
 
 })();
-
-
 $().ready( document.getElementById('dashboard').style.backgroundImage="url(images/animals/animals_band.gif)");
