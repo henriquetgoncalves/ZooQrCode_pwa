@@ -20,7 +20,7 @@
         listAnimal = document.getElementById('listAnimal'),
         animalDetail = document.getElementById('animalDetail'),
         animalForm = document.getElementById('animalForm'),
-        imgAnimal = document.getElementById('imgAnimal'),        
+        imgAnimal = document.getElementById('imgAnimal'),
         btnBack = document.getElementById('btnBack'),
         btnLogout = document.getElementById('btnLogout'),
         btnAdd = document.getElementById('btnAdd'),
@@ -74,7 +74,7 @@
 })();
 function addForm(state) {
     if (state == 1) {
-        title.innerText="";
+        title.innerText = "";
         hide(listAnimal);
         hide(btnAdd);
         hide(btnBack);
@@ -83,7 +83,7 @@ function addForm(state) {
         show(btnSave);
         show(animalDetail);
     } else if (state == 2) {
-        title.innerText="Animais";
+        title.innerText = "Animais";
         show(listAnimal);
         show(btnAdd);
         hide(btnDel);
@@ -92,10 +92,10 @@ function addForm(state) {
         hide(btnCancel);
         hide(btnSave);
         hide(animalDetail);
-        //animalForm.reset();
+        reset();
         imgAnimal.src = "#";
     } else if (state == 3) {
-        title.innerText="";
+        title.innerText = "";
         hide(listAnimal);
         hide(btnAdd);
         hide(btnBack);
@@ -133,21 +133,23 @@ function saveAnimal() {
         caracteristica: document.getElementById('txtCaracteristica').value,
         dieta_habitos_alimentares: document.getElementById('txtDieta_habitos_alimentares').value,
         reproducao: document.getElementById('txtReproducao').value,
-        qrcode: document.getElementById('txtQrCode').value
+        qrcode: id
     };
     //add animal
     if (id == "") {
-        snackbar_show("Incluindo " + animal.nome + "...", 10000);
+        snackbar_show("Incluindo o animal " + animal.nome + "...", 10000);
 
         // Get a key for a new Animal.    
         var newAnimalKey = firebase.database().ref().child('tabelas').child('animais').push().key;
+        animal.qrcode = newAnimalKey;
+        
         // Get animal key storage reference - For remove image animal
         var storageRef = firebase.storage().ref("imagens/animais/" + newAnimalKey);
         // Uploading the file on storage firebase
         var uploadTask = storageRef.put(image).catch(e => {
             snackbar_close();
             snackbar_show(e.error + "-" + e.message, 10000);
-        });        
+        });
 
         //Save in firebase database for animals
         var updates = {};
@@ -162,7 +164,7 @@ function saveAnimal() {
     }
     //Update animal
     else {
-        snackbar_show("Atualizando " + animal.nome + "...", 7000);
+        snackbar_show("Atualizando o animal " + animal.nome + "...", 7000);
         var promise = firebase.database().ref("tabelas/animais/" + id);
         promise.update(animal).catch(e => {
             snackbar_close();
@@ -181,24 +183,24 @@ function saveAnimal() {
             // 1. 'state_changed' observer, called any time the state changes
             // 2. Error observer, called on failure
             // 3. Completion observer, called on successful completion
-            uploadTask.on('state_changed', function(snapshot){
+            uploadTask.on('state_changed', function (snapshot) {
                 // Observe state change events such as progress, pause, and resume
                 // See below for more detail
-                
-            }, function(error) {
+
+            }, function (error) {
                 // Handle unsuccessful uploads
                 snackbar_close();
                 snackbar_show(e.error + " - " + e.message, 20000);
-            }, function() {
+            }, function () {
                 // Handle successful uploads on complete
                 // For instance, get the download URL: https://firebasestorage.googleapis.com/...
                 var downloadURL = uploadTask.snapshot.downloadURL;
                 snackbar_close();
-                snackbar_show(downloadURL, 20000);                
-            });            
+                snackbar_show("Concluído...", 20000);
+            });
             var currentCard = document.getElementById(id);
             currentCard.querySelector('.icon').src = imgAnimal.src;
-        }        
+        }
     }
 
     addForm(2);
@@ -238,7 +240,7 @@ function delAnimal() {
     });
 
 
-    //animalForm.reset();
+    reset();
     addForm(2);
     snackbar_show("Registro excluído com sucesso!", 6000);
 }
@@ -273,7 +275,6 @@ function removeCard(data) {
 
 function loadAnimalDetail(obj) {
     var animal = JSON.parse(obj.querySelector('#detail').innerText);
-    document.getElementById('txtID').value = obj.id;
     document.getElementById('txtNome').value = animal.nome;
     document.getElementById('txtNomeCientifico').value = animal.nome_cientifico;
     $('#estado_conservacao').val(animal.estado_conservacao);
@@ -286,12 +287,29 @@ function loadAnimalDetail(obj) {
     document.getElementById('txtCaracteristica').value = animal.caracteristica;
     document.getElementById('txtDieta_habitos_alimentares').value = animal.dieta_habitos_alimentares;
     document.getElementById('txtReproducao').value = animal.reproducao;
-    document.getElementById('txtQrCode').value = animal.qrcode;
+    document.getElementById('txtID').value = obj.id;
     imgAnimal.src = obj.querySelector('.icon').src;
     show(imgAnimal);
     addForm(3);
 }
 
-$(document).keyup(function(e) {
-  if (e.keyCode === 27) $('#btnCancel').click();   // esc
+function reset(){
+    document.getElementById('txtNome').value = "";
+    document.getElementById('txtNomeCientifico').value = "";
+    $('#estado_conservacao').val("Ameaçado de Extinção");
+    document.getElementById('txtReino').value = "";
+    $('#classificacao').val("Anfíbios");
+    document.getElementById('txtOrdem').value = "";
+    document.getElementById('txtFamilia').value = "";
+    document.getElementById('txtEspecie').value = "";
+    document.getElementById('txtDistribuicao_geo_habitat').value = "";
+    document.getElementById('txtCaracteristica').value = "";
+    document.getElementById('txtDieta_habitos_alimentares').value = "";
+    document.getElementById('txtReproducao').value = "";
+    document.getElementById('txtID').value = "";
+    imgAnimal.src = "url('#')";
+}
+
+$(document).keyup(function (e) {
+    if (e.keyCode === 27) $('#btnCancel').click();   // esc
 });

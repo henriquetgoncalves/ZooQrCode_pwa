@@ -109,4 +109,4 @@
     }
 
 })();
-$().ready( document.getElementById('dashboard').style.backgroundImage="url(images/animals/animals_band.gif)");
+//$().ready( document.getElementById('dashboard').style.backgroundImage="url(images/animals/animals_band.gif)");
