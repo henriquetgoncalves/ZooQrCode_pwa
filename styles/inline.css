@@ -46,7 +46,22 @@ body {
     align-content: stretch;
     background: #ececec;
 }
-
+.mdl-layout-title {
+    background-image: url(../images/animals/header.jpg);
+    height: 200px;
+    width: 100%;    
+}
+.mdl-layout-title img {
+    margin:10px;
+}
+#dashboard{
+    /*background-image: url(../images/animals/animals_band.gif);*/
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    background-color: #111;
+}
 .mdl-layout__header {
     background: #1a8f00;
 }

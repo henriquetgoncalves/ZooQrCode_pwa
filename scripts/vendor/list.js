@@ -1,17 +1,6 @@
 var btnVoltar = document.getElementById('menu-lower-left');
 window.onload = function () {
 
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyAKkqHvQucpECLDE-n7r8RjHoiIDya86gM",
-        authDomain: "zooqrcode.firebaseapp.com",
-        databaseURL: "https://zooqrcode.firebaseio.com",
-        projectId: "zooqrcode",
-        storageBucket: "zooqrcode.appspot.com",
-        messagingSenderId: "373519758441"
-    };
-    firebase.initializeApp(config);
-
     const auth = firebase.auth(),
         storage = firebase.storage(),
         animals = firebase.database().ref('tabelas/animais');

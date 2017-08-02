@@ -1,40 +1,30 @@
-var btnVoltar = document.getElementById('menu-lower-left');
-var parameter = gup('par', location.search);
+const   storage = firebase.storage(),
+        classes = firebase.database().ref('tabelas/classes'),
+        animals = firebase.database().ref('tabelas/animais');
 
-const auth = firebase.auth(),
-    storage = firebase.storage(),
-    classes = firebase.database().ref('tabelas/classes'),    
-    list_animals = document.getElementById('list_animals'),
-    list_classes = document.getElementById('list_classes');
-    
-var animals = firebase.database().ref('tabelas/animais');
+// classes.on('child_added', data => {
+//     createCard(data, { element: list_classes, ref: "classes" });
+// });
 
-if(parameter)
-    animals = animals.orderByChild("estado_conservacao").equalTo("Ameaçado de Extinção");
+// classes.on('child_changed', function (data) {
+//     createCard(data, { element: list_classes, ref: "classes" });
+// });
 
-classes.on('child_added', data => {
-    createCard(data, { element: list_classes, ref: "classes" });
-});
+// classes.on('child_removed', function (data) {
+//     removeCard(data, list_classes);
+// });
 
-classes.on('child_changed', function (data) {
-    createCard(data, { element: list_classes, ref: "classes" });
-});
+// animals.on('child_added', data => {
+//     createCard(data, { element: list_animals, ref: "animais" });
+// });
 
-classes.on('child_removed', function (data) {
-    removeCard(data, list_classes);
-});
+// animals.on('child_changed', function (data) {
+//     createCard(data, { element: list_animals, ref: "animais" });
+// });
 
-animals.on('child_added', data => {
-    createCard(data, { element: list_animals, ref: "animais" });
-});
-
-animals.on('child_changed', function (data) {
-    createCard(data, { element: list_animals, ref: "animais" });
-});
-
-animals.on('child_removed', function (data) {
-    removeCard(data, list_animals);
-});
+// animals.on('child_removed', function (data) {
+//     removeCard(data, list_animals);
+// });
 
 function createCard(data, type) {
     var cardTemplate = document.getElementById(data.key);

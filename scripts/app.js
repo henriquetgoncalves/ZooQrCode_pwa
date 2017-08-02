@@ -1,15 +1,5 @@
 (function () {
 
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyAKkqHvQucpECLDE-n7r8RjHoiIDya86gM",
-        authDomain: "zooqrcode.firebaseapp.com",
-        databaseURL: "https://zooqrcode.firebaseio.com",
-        projectId: "zooqrcode",
-        storageBucket: "zooqrcode.appspot.com",
-        messagingSenderId: "373519758441"
-    };
-    firebase.initializeApp(config);
     const auth = firebase.auth();
 
     document.getElementById('fabQrCodeScan').addEventListener('click', function () {
@@ -35,66 +25,7 @@
         }
         return true;
     }
-    var getData = function (key) {
-        var url = new URL("./",self.location).href + key;
 
-        if ('caches' in window) {
-            /*
-             * Check if the service worker has already cached this city's weather
-             * data. If the service worker has the data, then display the cached
-             * data while the app fetches the latest data.
-             */
-            caches.match(url).then(function (response) {
-                if (response) {
-                    if (isJson(response)) {
-                        response.json().then(function updateFromCache(json) {
-                            var response = JSON.stringify(json);
-                            results = JSON.parse(response);
-                            if (key === "JSONdata/animals.json") {
-                                listAnimals(results);
-                            } else {
-                                console.log(response.apelido);
-                            }
-
-                        });
-                    }
-                    console.log("getting data for cache=" + url);
-                }
-            });
-        }
-
-        if (navigator.onLine) {
-            // Make the XHR to get the data, then update the card
-            var request = new XMLHttpRequest();
-
-            request.onreadystatechange = function () {
-                if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-                    if (isJson(request.response)) {
-                        results = JSON.parse(request.response);
-                        console.log("getting data for URL=" + url);
-                        if (key === "JSONdata/animals.json") {
-                            listAnimals(results);
-                        } else {
-                            console.log(results.apelido);
-                        }
-                    }
-                }
-
-            };
-            request.open('GET', url);
-            request.send();
-
-        }
-    }
-
-    var listAnimals = function (data) {
-        for (var a in data) {
-            console.log(a);
-            getData('JSONdata/' + a + '.json');
-        }
-    }
-    getData("animal-detail.html");
-    getData("JSONdata/animals.json");
     //Registrando o arquivo service-worker
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
@@ -109,4 +40,3 @@
     }
 
 })();
-//$().ready( document.getElementById('dashboard').style.backgroundImage="url(images/animals/animals_band.gif)");

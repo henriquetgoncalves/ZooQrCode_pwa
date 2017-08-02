@@ -4,7 +4,12 @@
     <!-- Material Design Lite -->
     <link rel="stylesheet" href="styles/material.indigo-pink.min.css">
     <script defer src="scripts/material.min.js"></script>
+    
     <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase.js"></script>
+    <script src="scripts/vendor/firebase.js"></script>
+
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <meta charset="utf-8">
@@ -15,9 +20,10 @@
 
     <link rel="stylesheet" type="text/css" href="styles/inline.css">
     <link rel="stylesheet" type="text/css" href="styles/dialog-polyFill.css" />
+    <link rel="stylesheet" type="text/css" href="styles/qrcode.css">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="images/icons/icon-32x32.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 
     <!-- Add to home screen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -35,25 +41,24 @@
 
 </head>
 
-
 <body>
     <header class="header">
-        <button id="menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon">
+        <button id="menu-lower-left" onclick="window.location.href = 'index.html'" class="mdl-button mdl-js-button mdl-button--icon">
             <i class="material-icons"> navigate_before</i>
         </button>
-        <h1 class="header__title">Listagem</h1>
+        <h1 class="header__title">Galeria</h1>
     </header>
     <main class="main">
-        <div class="card cardTemplate zoo-qcode" style="display:none; position: center center;">
-            <div style="display: inline-block;">
-                <img class="icon" />
-            </div>
-            <div class="Description_title" style="display: inline-block">
-                <div id="name" style="display: inline-block"></div>                            
-            </div>            
+        <div id="gallery">
+            <img src="/images/icons/ic_avatar-128x128.png" />
+            <img src="/images/icons/ic_avatar-128x128.png" />
+            <img src="/images/icons/ic_avatar-128x128.png" />
+            <img src="/images/icons/ic_avatar-128x128.png" />
+            <img src="/images/icons/ic_avatar-128x128.png" />
+            <img src="/images/icons/ic_avatar-128x128.png" />
+            <img src="/images/icons/ic_avatar-128x128.png" />
         </div>
     </main>
 </body>
-<script src="scripts/vendor/list.js"></script>
-
+<script src="scripts/vendor/gallery.js"></script>
 </html>

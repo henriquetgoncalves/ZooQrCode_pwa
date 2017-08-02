@@ -4,9 +4,13 @@
     <!-- Material Design Lite -->
     <link rel="stylesheet" href="styles/material.indigo-pink.min.css">
     <script defer src="scripts/material.min.js"></script>
+
     <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase.js"></script>    
+    <script src="scripts/vendor/firebase.js"></script>
+    
     <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script> 
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <meta charset="utf-8">
@@ -19,7 +23,6 @@
     <link rel="stylesheet" type="text/css" href="styles/inline.css">
     <link rel="stylesheet" type="text/css" href="styles/dialog-polyFill.css" />
     <link rel="stylesheet" type="text/css" href="styles/qrcode.css">
-    <link rel="stylesheet" type="text/css" href="styles/dashboard.css">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="images/icons/icon-32x32.png">
 
@@ -67,16 +70,13 @@
                 <a class="mdl-navigation__link" href="qrcode-scanner.html">
                     <i class="material-icons">center_focus_strong</i> Ler QrCode
                 </a>
-                <!--<a class="mdl-navigation__link" href="list.html?type=animals&item=ameacado_de_extincao&tela=ameacados">
-                    <i class="material-icons">warning</i> Ameaçados de Extinção
-                </a>-->
                 <a class="mdl-navigation__link" href="list_animals.html?par=ameacado_de_extincao">
                     <i class="material-icons">warning</i> Ameaçados de Extinção
                 </a>
                 <a class="mdl-navigation__link" href="list_animals.html">
                     <i class="material-icons">pets</i> Animais
                 </a>
-                <a class="mdl-navigation__link" href="">
+                <a class="mdl-navigation__link" href="gallery.html">
                     <i class="material-icons">collections</i> Galeria de Animais
                 </a>
                 <a class="mdl-navigation__link" href="map.html">
@@ -88,8 +88,6 @@
                 <a class="mdl-navigation__link" href="private/administrative.html">
                     <i class="material-icons">supervisor_account</i> Administrativo
                 </a>
-
-
             </nav>
         </div>
         <main id="dashboard" class="mdl-layout__content">
@@ -99,11 +97,10 @@
                     <i class="material-icons custom-fab-icon">center_focus_strong</i>
                 </button>
             </div>
-            <script src="scripts/app.js" async></script>
-            <script src="scripts/dialog-polyFill.js"></script>
-
         </main>
     </div>
 </body>
+<script src="scripts/app.js" async></script>
+<script src="scripts/dialog-polyFill.js"></script>
 
 </html>

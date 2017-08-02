@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <script src="https://www.gstatic.com/firebasejs/3.7.6/firebase.js"></script>
+    <script src="../scripts/vendor/firebase.js"></script>
+
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/snackbar.css">
     <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -23,9 +25,9 @@
 
     <link rel="stylesheet" type="text/css" href="../styles/inline.css">
     <link rel="stylesheet" type="text/css" href="../styles/dialog-polyFill.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/qrcode.css">
     <link rel="manifest" href="../manifest.json">
     <link rel="icon" href="../images/icons/icon-32x32.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!-- Add to home screen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -51,36 +53,39 @@
         </button>
         <button id="btnCancel" class="mdl-button mdl-js-button mdl-button--icon" onclick="return addForm(2)">
             <i class="material-icons">clear</i>
+        </button>
+        <button id="btnDel" onclick="return delAnimal()" class="mdl-button mdl-js-button mdl-button--icon" onclick="return addForm(2)">
+            <i class="material-icons">delete</i>
         </button>        
         <h1 id="title" class="header__title">Admin</h1>
         <!-- Right aligned menu below button -->
-        <button id="btnAdd" onclick="return addForm(1)" class="mdl-button mdl-js-button mdl-button--icon">
+        <!--<button id="btnAdd" onclick="return addForm(1)" class="mdl-button mdl-js-button mdl-button--icon">
             <i class="material-icons" >add</i>
-        </button>
-        <button id="btnDel" onclick="return delAnimal()" class="mdl-button mdl-js-button mdl-button--icon">
+        </button>-->
+        <!--<button id="btnDel" onclick="return delAnimal()" class="mdl-button mdl-js-button mdl-button--icon">
             <i class="material-icons" >delete</i>
-        </button>        
+        </button>-->
         <button id="btnSave" onclick="saveAnimal()" class="mdl-button mdl-js-button mdl-button--icon">
             <i class="material-icons">done</i>
-        </button>        
+        </button>
         <button id="btnLogout" class="mdl-button mdl-js-button mdl-button--icon">
             <i class="material-icons">power_settings_new</i>
         </button>
     </header>
     <main class="main">
         <div id="content" class="content" style="display:none">
-            <div id="listAnimal" class="listAnimals" >
+            <div id="listAnimal" class="listAnimals">
                 <div id="cardtemplate" class="listAnimal" style="position: center center; display:none;">
                     <div style="display: inline-block;">
-                        <img class="icon"/>
+                        <img class="icon" />
                     </div>
                     <div class="Description_title" style="display: inline-block">
                         <div id="name" style="display: inline-block">Este é um teste de Título</div>
                         <div id="sub" class="Description_subitem" style="display: inline-block">Este é um teste de Sub Item</div>
-                        <pre id="detail" style="display:none"></pre>                        
+                        <pre id="detail" style="display:none"></pre>
                     </div>
                     <hr></hr>
-                </div>
+                </div>             
             </div>
             <div id="animalDetail" style="display:none">
                 <div class="form">
@@ -118,8 +123,12 @@
                     </div>
                 </div>
             </div>
-        </div>       
+        </div>
+        <button id="btnAdd" onclick="return addForm(1)" class="custom-btn">
+            <i class="material-icons custom-fab-icon">add</i>
+        </button>   
         <div id="snackbar"></div>
+
     </main>
 
 </body>
