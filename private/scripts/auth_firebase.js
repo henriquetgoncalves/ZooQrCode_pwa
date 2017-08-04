@@ -3,6 +3,9 @@ const auth = firebase.auth(),
     database = firebase.database();
 
 $('#btnLogin').click(e => {
+    
+    snackbar_show("Entrando...");
+
     const txtEmail = document.getElementById('txtEmail');
     const txtPass = document.getElementById('txtPass');
 
@@ -21,6 +24,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         window.user = user;
         console.log("User is signed in.");
+        snackbar_close();
         window.location.href = "./administrative.html";
     } else {
         console.log("No user is signed in.");
