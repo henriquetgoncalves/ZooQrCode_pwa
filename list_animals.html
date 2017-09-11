@@ -49,9 +49,9 @@
             <i class="material-icons"> navigate_before</i>
         </button>
         <h1 class="header__title">Listagem</h1>
-        <button id="btnFilter" onclick="$('#list_classes').fadeIn();" class="mdl-button mdl-js-button mdl-button--icon">
+        <!-- <button id="btnFilter" onclick="$('#list_classes').fadeIn();" class="mdl-button mdl-js-button mdl-button--icon">
             <i class="material-icons" >search</i>
-        </button>        
+        </button> -->        
     </header>
     <main class="main">
         <div class="loader">
@@ -83,7 +83,14 @@
                     <pre id="detail" style="display:none"></pre>
                 </div>
                 <hr></hr>
-            </div>
+            </div>                                    
+            <div id="no_animal" style="position: center center; display:none;">
+                <h4>
+                :( Não foi possível encontrar um animal com a classe selecionada ):
+                </h4>
+            </div>            
+        </div>
+
     </main>
 
 </body>

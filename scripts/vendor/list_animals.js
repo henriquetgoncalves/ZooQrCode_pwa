@@ -62,9 +62,15 @@ function createCard(data, type) {
         var x = replaceSpecialChars(data.val().nome);
         cardTemplate.classList.add(x);
         cardTemplate.addEventListener("click", function () {
-            $('#list_animals .animais').hide();
-            $('#list_classes').fadeOut();
-            $('#list_animals .' + x).show();
+            $('#list_animals .animais').fadeOut();
+            $('#no_animal').fadeOut();
+            //$('#list_classes').fadeOut();
+            if ($('#list_animals .' + x).length == 0){
+                $('#no_animal').fadeIn();
+            }else{
+                $('#list_animals .' + x).fadeIn();
+            }
+            
         });
     }
 

@@ -56,7 +56,7 @@
         </button>
         <button id="btnDel" onclick="return delAnimal()" class="mdl-button mdl-js-button mdl-button--icon" onclick="return addForm(2)">
             <i class="material-icons">delete</i>
-        </button>        
+        </button>
         <h1 id="title" class="header__title">Admin</h1>
         <!-- Right aligned menu below button -->
         <!--<button id="btnAdd" onclick="return addForm(1)" class="mdl-button mdl-js-button mdl-button--icon">
@@ -78,13 +78,13 @@
                 <div id="cardtemplate" class="listAnimal" style="position: center center; display:none;">
                     <div style="display: inline-block;">
                         <img class="icon" />
-                    </div>
+                    </div>        
                     <div class="Description_title" style="display: inline-block">
-                        <div id="name" style="display: inline-block">Este é um teste de Título</div>
-                        <div id="sub" class="Description_subitem" style="display: inline-block">Este é um teste de Sub Item</div>
+                        <div id="name" style="display: inline-block">Este é um teste de Título</div>                        
+                        <div id="sub" class="Description_subitem" style="display: inline-block" >Este é um teste de Sub Item</div>
                         <pre id="detail" style="display:none"></pre>
-                    </div>
-                    <hr></hr>
+                    </div>                    
+                   <hr></hr>
                 </div>             
             </div>
             <div id="animalDetail" style="display:none">
@@ -120,13 +120,14 @@
                         <textarea id="txtDieta_habitos_alimentares" rows="2" cols="50" name="comment" placeholder="Dieta e Hábitos Alimentares"></textarea>
                         <textarea id="txtReproducao" rows="3" cols="50" name="comment" placeholder="Reprodução"></textarea>
                         <label id="txtID" />
-                    </div>
+                        <button id="btnGetQR" >Gerar QR Code</button>
+                    </div>                    
                 </div>
             </div>
         </div>
         <button id="btnAdd" onclick="return addForm(1)" class="custom-btn">
             <i class="material-icons custom-fab-icon">add</i>
-        </button>   
+        </button>
         <div id="snackbar"></div>
 
     </main>

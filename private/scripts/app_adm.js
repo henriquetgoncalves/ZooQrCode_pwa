@@ -302,3 +302,7 @@ function reset(){
 $(document).keyup(function (e) {
     if (e.keyCode === 27) $('#btnCancel').click();   // esc
 });
+
+$('#btnGetQR').click(function (e){
+    window.location.href = "javascript: window.open('https://chart.googleapis.com/chart?cht=qr&chs=177x177&chl="+ document.getElementById('txtID').value+"'); w.print(); w.close()";
+});
