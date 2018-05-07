@@ -57,11 +57,11 @@ body {
 }
 #dashboard{
     background-image: url(../images/animals/img_principal.jpg);
-    background-position: center center;
+    background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: contain;
-    /*background-color: #111;*/
+    background-size: cover;
+    background-color: #111;
 }
 .mdl-layout__header {
     background: #1a8f00;
