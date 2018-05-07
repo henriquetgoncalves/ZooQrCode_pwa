@@ -13,7 +13,7 @@ function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude +
         "<br>Longitude: " + position.coords.longitude;
     console.log("Latidude and Longitude has cactched");
-    ShowMap(position); 
+    //ShowMap(position); 
 }
 
 function ShowMap(position) {
