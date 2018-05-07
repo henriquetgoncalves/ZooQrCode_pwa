@@ -1,4 +1,4 @@
-var dataCacheName = 'ZooQrCode_PWA-v1_local';
+var dataCacheName = 'ZooQrCode_PWA-v2_local';
 var cacheName = 'ZooQrCode_PWA_local';
 var filesToCache = [
     './',
