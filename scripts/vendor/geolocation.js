@@ -1,5 +1,7 @@
 window.setInterval(getLocation, 5000);
 
+var x = document.getElementById("mapa_zoo");
+
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition(showPosition);        
@@ -13,7 +15,7 @@ function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude +
         "<br>Longitude: " + position.coords.longitude;
     console.log("Latidude and Longitude has cactched");
-    //ShowMap(position); 
+    ShowMap(position); 
 }
 
 function ShowMap(position) {
