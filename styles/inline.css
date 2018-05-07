@@ -61,7 +61,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: contain;
-    background-color: #111;
+    /*background-color: #111;*/
 }
 .mdl-layout__header {
     background: #1a8f00;
