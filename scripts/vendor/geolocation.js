@@ -1,10 +1,8 @@
-window.setInterval(getLocation, 10000);
-
-var x = document.getElementById("mapa_zoo");
+window.setInterval(getLocation, 5000);
 
 function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.watchPosition(showPosition);
+        navigator.geolocation.watchPosition(showPosition);        
     } else {
         x.innerHTML = "Geolocation não é suportada neste browser.";
     }
@@ -15,6 +13,16 @@ function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude +
         "<br>Longitude: " + position.coords.longitude;
     console.log("Latidude and Longitude has cactched");
+    ShowMap(position); 
+}
+
+function ShowMap(position) {
+    var mapOptions = {
+        center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+        zoom: 10,
+        mapTypeId: google.maps.MapTypeId.HYBRID
+    }
+    var map = new google.maps.Map(document.getElementById("mapa_zoo"), mapOptions);
 }
 
 /*

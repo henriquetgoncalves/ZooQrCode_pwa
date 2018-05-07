@@ -119,19 +119,44 @@ function ValidaInfos(animal){
     else if(animal.estado_conservacao == ""){
         bFlag=false;
         cCampo = "Estado de Conservação";
+    }
+    else if(animal.classificacao.reino == ""){
+        bFlag=false;
+        cCampo = "Reino";
+    }        
+    else if(animal.classificacao.classificacao == ""){
+        bFlag=false;
+        cCampo = "Classificação";
+    }    
+    else if(animal.classificacao.ordem == ""){
+        bFlag=false;
+        cCampo = "Ordem";
     }    
     else if(animal.classificacao.familia == ""){
         bFlag=false;
         cCampo = "Família";
     }
-    else if(animal.classificacao.classificacao == ""){
+    else if(animal.classificacao.especie == ""){
         bFlag=false;
-        cCampo = "Classificação";
+        cCampo = "Espécie";
+    }    
+    else if(animal.distribuicao_geo_habitat == "" || animal.distribuicao_geo_habitat.length < 30 ){
+        bFlag=false;
+        cCampo = "Distribuição Geográfica e Habitat. Mínimo de 30 caracteres.";
     }
     else if(animal.caracteristica == "" || animal.caracteristica.length < 30 ){
         bFlag=false;
-        cCampo = "Característica. Mínimo de 30 caracteres.";
-    }    
+        cCampo = "Característica. Mínimo de 20 caracteres.";
+    }
+    else if(animal.dieta_habitos_alimentares == "" || animal.dieta_habitos_alimentares.length < 20 ){
+        bFlag=false;
+        cCampo = "Dieta e Hábitos Alimentares. Mínimo de 20 caracteres.";
+    }
+    else if(animal.reproducao == "" || animal.reproducao.length < 20 ){
+        bFlag=false;
+        cCampo = "Reprodução. Mínimo de 20 caracteres.";
+    }
+
     snackbar_show("Preencha o campo "+cCampo,10000);
     return bFlag;
 }
@@ -210,6 +235,7 @@ function saveAnimal() {
                 uploadTask.on('state_changed', function (snapshot) {
                     // Observe state change events such as progress, pause, and resume
                     // See below for more detail
+                    console.log(snapshot);
 
                 }, function (error) {
                     // Handle unsuccessful uploads
