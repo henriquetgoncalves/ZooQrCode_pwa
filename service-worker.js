@@ -90,7 +90,7 @@ self.addEventListener('fetch', function (e) {
             caches.match(e.request).then(function (response) {
                 return response || fetch(e.request);
             }).catch(function (err) {
-                var body = "<h1>Ooops... Algo deu errado!</h1><br>";
+                var body = "<h1>Ooops... Algo deu errado!</h1><br>"+err;
                 var resp = new Response(body, {
                     headers: { 'Content-Type': 'text/html' }
                 });

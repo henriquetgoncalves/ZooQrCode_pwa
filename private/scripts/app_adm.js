@@ -103,6 +103,39 @@ function show(obj) {
     obj.style.display = "block";
 }
 
+function ValidaInfos(animal){
+    // Valida informações
+    var bFlag=true;
+    var cCampo="";
+
+    if (animal.nome == ""){        
+        bFlag=false;
+        cCampo = "Nome";
+    }
+    else if(animal.nome_cientifico == ""){
+        bFlag=false;
+        cCampo = "Nome Científico";
+    }
+    else if(animal.estado_conservacao == ""){
+        bFlag=false;
+        cCampo = "Estado de Conservação";
+    }    
+    else if(animal.classificacao.familia == ""){
+        bFlag=false;
+        cCampo = "Família";
+    }
+    else if(animal.classificacao.classificacao == ""){
+        bFlag=false;
+        cCampo = "Classificação";
+    }
+    else if(animal.caracteristica == "" || animal.caracteristica.length < 30 ){
+        bFlag=false;
+        cCampo = "Característica. Mínimo de 30 caracteres.";
+    }    
+    snackbar_show("Preencha o campo "+cCampo,10000);
+    return bFlag;
+}
+
 function saveAnimal() {
     // Create animal object
     var id = document.getElementById('txtID').value;
@@ -123,77 +156,80 @@ function saveAnimal() {
         dieta_habitos_alimentares: document.getElementById('txtDieta_habitos_alimentares').value,
         reproducao: document.getElementById('txtReproducao').value,
         qrcode: id
-    };
-    //add animal
-    if (id == "") {
-        snackbar_show("Incluindo o animal " + animal.nome + "...", 10000);
+    };    
+    
+    if( ValidaInfos(animal)){
+        //add animal
+        if (id == "") {
+            snackbar_show("Incluindo o animal " + animal.nome + "...", 10000);
 
-        // Get a key for a new Animal.    
-        var newAnimalKey = firebase.database().ref().child('tabelas').child('animais').push().key;
-        animal.qrcode = newAnimalKey;
-        
-        // Get animal key storage reference - For remove image animal
-        var storageRef = firebase.storage().ref("imagens/animais/" + newAnimalKey);
-        // Uploading the file on storage firebase
-        var uploadTask = storageRef.put(image).catch(e => {
-            snackbar_close();
-            snackbar_show(e.error + "-" + e.message, 10000);
-        });
-
-        //Save in firebase database for animals
-        var updates = {};
-        updates['/tabelas/animais/' + newAnimalKey] = animal;
-
-        var promise = firebase.database().ref().update(updates);
-
-        promise.catch(e => {
-            snackbar_close();
-            snackbar_show(e.error + "-" + e.message, 10000);
-        });
-    }
-    //Update animal
-    else {
-        snackbar_show("Atualizando o animal " + animal.nome + "...", 7000);
-        var promise = firebase.database().ref("tabelas/animais/" + id);
-        promise.update(animal).catch(e => {
-            snackbar_close();
-            snackbar_show(e.error + "-" + e.message, 10000);
-        });
-        if (image) {
+            // Get a key for a new Animal.    
+            var newAnimalKey = firebase.database().ref().child('tabelas').child('animais').push().key;
+            animal.qrcode = newAnimalKey;
+            
             // Get animal key storage reference - For remove image animal
-            var storageRef = firebase.storage().ref("imagens/animais/" + id);
-            storageRef.delete().catch(function (error) {
-                console.log("Uh-oh, an error occurred on deleting file!");
-            });
+            var storageRef = firebase.storage().ref("imagens/animais/" + newAnimalKey);
             // Uploading the file on storage firebase
-            var uploadTask = storageRef.put(image);
-
-            // Register three observers:
-            // 1. 'state_changed' observer, called any time the state changes
-            // 2. Error observer, called on failure
-            // 3. Completion observer, called on successful completion
-            uploadTask.on('state_changed', function (snapshot) {
-                // Observe state change events such as progress, pause, and resume
-                // See below for more detail
-
-            }, function (error) {
-                // Handle unsuccessful uploads
+            var uploadTask = storageRef.put(image).catch(e => {
                 snackbar_close();
-                snackbar_show(e.error + " - " + e.message, 20000);
-            }, function () {
-                // Handle successful uploads on complete
-                // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-                var downloadURL = uploadTask.snapshot.downloadURL;
-                snackbar_close();
-                snackbar_show("Concluído...", 20000);
+                snackbar_show(e.error + "-" + e.message, 10000);
             });
-            var currentCard = document.getElementById(id);
-            currentCard.querySelector('.icon').src = imgAnimal.src;
-        }
-    }
 
-    addForm(2);
-    //return false;
+            //Save in firebase database for animals
+            var updates = {};
+            updates['/tabelas/animais/' + newAnimalKey] = animal;
+
+            var promise = firebase.database().ref().update(updates);
+
+            promise.catch(e => {
+                snackbar_close();
+                snackbar_show(e.error + "-" + e.message, 10000);
+            });
+        }
+        //Update animal
+        else {
+            snackbar_show("Atualizando o animal " + animal.nome + "...", 7000);
+            var promise = firebase.database().ref("tabelas/animais/" + id);
+            promise.update(animal).catch(e => {
+                snackbar_close();
+                snackbar_show(e.error + "-" + e.message, 10000);
+            });
+            if (image) {
+                // Get animal key storage reference - For remove image animal
+                var storageRef = firebase.storage().ref("imagens/animais/" + id);
+                storageRef.delete().catch(function (error) {
+                    console.log("Oooops... Ocorreu um erro ao deletar o arquivo!");
+                });
+                // Uploading the file on storage firebase
+                var uploadTask = storageRef.put(image);
+
+                // Register three observers:
+                // 1. 'state_changed' observer, called any time the state changes
+                // 2. Error observer, called on failure
+                // 3. Completion observer, called on successful completion
+                uploadTask.on('state_changed', function (snapshot) {
+                    // Observe state change events such as progress, pause, and resume
+                    // See below for more detail
+
+                }, function (error) {
+                    // Handle unsuccessful uploads
+                    snackbar_close();
+                    snackbar_show(e.error + " - " + e.message, 20000);
+                }, function () {
+                    // Handle successful uploads on complete
+                    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+                    var downloadURL = uploadTask.snapshot.downloadURL;
+                    snackbar_close();
+                    snackbar_show("Concluído...", 20000);
+                });
+                var currentCard = document.getElementById(id);
+                currentCard.querySelector('.icon').src = imgAnimal.src;
+            }
+        }
+
+        addForm(2);
+        //return false;
+    }
 }
 function delAnimal() {
 

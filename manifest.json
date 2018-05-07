@@ -1,6 +1,6 @@
 {
   "short_name": "Zoo QrCode",
-    "name": "Zoo QrCode",  
+  "name": "Zoo QrCode",  
   "icons": [{
     "src": "images/icons/icon-128x128.png",
       "sizes": "128x128",
@@ -21,7 +21,7 @@
       "src": "images/icons/icon-256x256.png",
       "sizes": "256x256",
       "type": "image/png"
-    }],
+  }],
   "start_url": "index.html?launcher=true",
   "display": "standalone",
   "background_color": "#1a9100",
