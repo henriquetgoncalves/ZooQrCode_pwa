@@ -20,17 +20,17 @@ QRReader.init = () => {
 	var streaming = false;
 
 	// Init Webcam + Canvas
-	//if (!window.iOS) {
+	if (!window.iOS) {
 		QRReader.webcam = document.querySelector("video");
-	//}
-	//else {
-	//	QRReader.webcam = document.querySelector("img");
-	//}
+	}
+	else {
+		QRReader.webcam = document.querySelector("img");
+	}
 
 	QRReader.setCanvas();
 	QRReader.decoder = new Worker(baseurl + "decoder.min.js");
 
-	//if (!window.iOS) {
+	if (!window.iOS) {
 		// Resize webcam according to input
 		QRReader.webcam.addEventListener("play", function (ev) {
 			if (!streaming) {
@@ -38,10 +38,10 @@ QRReader.init = () => {
 				streaming = true;
 			}
 		}, false);
-	//}
-	//else {
-	//	setCanvasProperties();
-	//}
+	}
+	else {
+		setCanvasProperties();
+	}
 
 	function setCanvasProperties() {
 		QRReader.canvas.width = window.innerWidth;
@@ -59,7 +59,7 @@ QRReader.init = () => {
 			});
 	}
 
-	//if (!window.iOS) {
+	if (!window.iOS) {
 		navigator.mediaDevices.enumerateDevices()
 			.then(function (devices) {
 				var device = devices.filter(function(device) {
@@ -101,7 +101,7 @@ QRReader.init = () => {
 				showErrorMsg();
 				console.error("Error occurred : ", error);
 			});
-	//}
+	}
 
 	function showErrorMsg() {
 		document.querySelector('.custom-btn').style.display = "none"; //Hide scan button, if error
