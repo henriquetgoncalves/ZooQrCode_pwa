@@ -200,7 +200,11 @@ function saveAnimal() {
             // Get animal key storage reference - For remove image animal
             var storageRef = firebase.storage().ref("imagens/animais/" + newAnimalKey);
             // Uploading the file on storage firebase
-            var uploadTask = storageRef.put(image).catch(e => {
+            var uploadTask = storageRef.put(image).then(function(snapshot){
+                console.log("Including an animal image on URL: " + snapshot.downloadURL);
+            });
+            
+            uploadTask.catch(e => {
                 snackbar_close();
                 snackbar_show(e.error + "-" + e.message, 10000);
             });
