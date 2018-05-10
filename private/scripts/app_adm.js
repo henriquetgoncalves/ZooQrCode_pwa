@@ -160,8 +160,9 @@ function ValidaInfos(animal){
         bFlag=false;
         cCampo = "imagem para o animal.";        
     }
-
-    snackbar_show("Preencha o campo "+cCampo,10000);
+    if (!bFlag){
+        snackbar_show("Preencha o campo "+cCampo,10000);   
+    }
     return bFlag;
 }
 
