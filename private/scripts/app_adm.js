@@ -306,7 +306,7 @@ function delAnimal() {
 }
 
 function setImage(obj, key) {
-    var storageRef = firebase.storage().ref("imagens/animais/" + key);
+    var storageRef = firebase.storage().Child("imagens/animais/" + key);
     storageRef.getDownloadURL().then(function (url) {
         obj.src = url;
     });
@@ -375,5 +375,5 @@ $(document).keyup(function (e) {
 });
 
 $('#btnGetQR').click(function (e){
-    window.location.href = "javascript: window.open('https://chart.googleapis.com/chart?cht=qr&chs=177x177&chl="+ document.getElementById('txtID').value+"'); w.print(); w.close()";
+    window.location.href = "javascript: window.open('https://chart.googleapis.com/chart?cht=qr&chs=177x177&chl="+ document.getElementById('txtID').value+"'); w.print(); w.close();";
 });
