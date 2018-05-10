@@ -158,7 +158,7 @@ function ValidaInfos(animal){
     }
     else if (document.getElementById('fileselect').files.length <= 0){
         bFlag=false;
-        cCampo = "Selecione uma imagem para o animal.";        
+        cCampo = "imagem para o animal.";        
     }
 
     snackbar_show("Preencha o campo "+cCampo,10000);
@@ -189,7 +189,7 @@ function saveAnimal() {
     
     if( ValidaInfos(animal)){
         //add animal
-        if(typeof id !== "undefined" && id=="") {
+        if(typeof id === "undefined" || id=="") {
             snackbar_show("Incluindo o animal " + animal.nome + "...", 10000);
 
             // Get a key for a new Animal.    
