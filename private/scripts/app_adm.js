@@ -156,6 +156,10 @@ function ValidaInfos(animal){
         bFlag=false;
         cCampo = "Reprodução. Mínimo de 20 caracteres.";
     }
+    else if (document.getElementById('fileselect').files.length <= 0){
+        bFlag=false;
+        cCampo = "Selecione uma imagem para o animal.";        
+    }
 
     snackbar_show("Preencha o campo "+cCampo,10000);
     return bFlag;
