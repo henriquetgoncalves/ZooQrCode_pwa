@@ -306,7 +306,7 @@ function delAnimal() {
 }
 
 function setImage(obj, key) {
-    var storageRef = firebase.storage().Child("imagens/animais/" + key);
+    var storageRef = firebase.storage().ref("imagens/animais/" + key);
     storageRef.getDownloadURL().then(function (url) {
         obj.src = url;
     });
