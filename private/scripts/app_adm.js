@@ -189,7 +189,7 @@ function saveAnimal() {
     
     if( ValidaInfos(animal)){
         //add animal
-        if(typeof id !== "undefined") {
+        if(typeof id !== "undefined" && id=="") {
             snackbar_show("Incluindo o animal " + animal.nome + "...", 10000);
 
             // Get a key for a new Animal.    
