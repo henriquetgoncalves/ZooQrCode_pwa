@@ -45,6 +45,7 @@ var filesToCache = [
     './images/animals/animals_band.gif',
     './images/animals/ic_tigre.png',
     './images/animals/img_principal.jpg',
+    './images/animals/banner_em_breve.png',
     './images/animals/header.jpg',
     './images/animals/mapa_zoologico.gif'
 ];
