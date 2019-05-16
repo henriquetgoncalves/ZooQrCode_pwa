@@ -9,14 +9,20 @@
     document.getElementById('menuItem_About').addEventListener('click', function () {
         window.location.href = "about.html";
     });
-    document.getElementById('menuItem_Adm').addEventListener('click', function (){
+    document.getElementById('menuItem_Adm1').addEventListener('click', function (){
         if (!auth.currentUser){
             window.location.href = "private/login.html";
         }else{            
             window.location.href = "private/administrative.html";
         }        
     });
-
+    document.getElementById('menuItem_Adm2').addEventListener('click', function (){
+        if (!auth.currentUser){
+            window.location.href = "private/login.html";
+        }else{            
+            window.location.href = "private/administrative.html";
+        }        
+    });
     function isJson(str) {
         try {
             JSON.parse(str);
